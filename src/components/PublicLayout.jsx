@@ -2,12 +2,12 @@ import { Outlet } from "react-router-dom";
 import TopNavBar from "./TopNavBar";
 import Footer from "./Footer";
 
-function PublicLayout() {
+function AppLayout() {
   return (
     <>
       <TopNavBar />
 
-      <main className="min-h-150">
+      <main className="min-h-170">
         <Outlet />
       </main>
 
@@ -16,4 +16,4 @@ function PublicLayout() {
   );
 }
 
-export default PublicLayout;
+export default AppLayout;
