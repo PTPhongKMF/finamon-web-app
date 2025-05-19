@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import AppLayout from "./components/AppLayout";
+import AppLayout from "./components/wrapper/AppLayout";
 import Blog from "./pages/Blog";
 import Feature from "./pages/Feature";
 import Pricing from "./pages/Pricing";
@@ -9,6 +9,8 @@ import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import AuthContextProvider from "./contexts/AuthContextProvider";
 import Logout from "./pages/Logout";
+import Overview from "./pages/Overview";
+import ProtectedRoute from "./components/wrapper/ProtectedRoute";
 
 function App() {
 
@@ -24,10 +26,15 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/logout" element={<Logout />} />
+
+          <Route element={<ProtectedRoute allowedRoles={["customer", "staff", "admin"]} />}>
+            <Route path="/app">
+              <Route index element={<Overview />} />
+            </Route>
+          </Route>
+
+          <Route path="*" element={<NotFound />} />
         </Route>
-
-
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </AuthContextProvider>
   )

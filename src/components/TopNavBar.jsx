@@ -12,32 +12,41 @@ function TopNavBar() {
       <div className="grid grid-cols-3 items-center">
         <div className="justify-self-start">
           <h1 className="text-4xl font-bold text-amber-400 hover:text-yellow-500 ml-20">
-            <Link to="/">Finamon</Link>
+            {pathname.startsWith("/app") ? (
+              "Sổ Chi Tiêu"
+            ) : (
+              <Link to="/">Finamon</Link>
+            )}
           </h1>
         </div>
 
-        <nav className="justify-self-center flex justify-center gap-10 text-gray-600 font-semibold text-lg">
-          <Link to="/"
-            className={`${pathname === "/" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
-          >
-            Giới Thiệu
-          </Link>
-          <Link to="/pricings"
-            className={`${pathname === "/pricings" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
-          >
-            Giá Cả
-          </Link>
-          <Link to="/features"
-            className={`${pathname === "/features" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
-          >
-            Tính Năng
-          </Link>
-          <Link to="/blogs"
-            className={`${pathname === "/blogs" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
-          >
-            Tin Tức
-          </Link>
-        </nav>
+        {pathname.startsWith("/app") ? (
+          <div></div>
+        ) : (
+          <nav className="justify-self-center flex justify-center gap-10 text-gray-600 font-semibold text-lg">
+            <Link to="/"
+              className={`${pathname === "/" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
+            >
+              Giới Thiệu
+            </Link>
+            <Link to="/pricings"
+              className={`${pathname === "/pricings" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
+            >
+              Giá Cả
+            </Link>
+            <Link to="/features"
+              className={`${pathname === "/features" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
+            >
+              Tính Năng
+            </Link>
+            <Link to="/blogs"
+              className={`${pathname === "/blogs" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
+            >
+              Tin Tức
+            </Link>
+          </nav>
+        )}
+
 
         <div className="flex justify-self-end">
           {user ? (
@@ -49,8 +58,8 @@ function TopNavBar() {
 
                 <HoverCardContent>
                   <nav className="flex flex-col gap-2 p-2 text-sm text-gray-700 bg-[url(/images/navbar_bg.svg)] bg-cover">
-                  <Link to="" className="block p-2 hover:border-b-2 hover:border-green-300 w-full">Tài Khoản</Link>
-                  <Link to="/logout" className="block rounded-md p-2 hover:border-2 hover:border-red-300 w-full">Đăng Xuất</Link>
+                    <Link to="" className="block p-2 hover:border-b-2 hover:border-green-300 w-full">Tài Khoản</Link>
+                    <Link to="/logout" className="block rounded-md p-2 hover:border-2 hover:border-red-300 w-full">Đăng Xuất</Link>
                   </nav>
                 </HoverCardContent>
               </HoverCard>
