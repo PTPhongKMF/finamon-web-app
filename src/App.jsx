@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import AuthContextProvider from "./contexts/AuthContextProvider";
+import Logout from "./pages/Logout";
 
 function App() {
 
@@ -22,8 +23,7 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-          {/* <Route path="/app" element={} />} /> */}
+          <Route path="/logout" element={<Logout />} />
         </Route>
 
 

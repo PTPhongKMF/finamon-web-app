@@ -20,6 +20,9 @@ function Register() {
                     password
                 }
             }).json();
+        },
+        onSuccess: (data) => {
+            
         }
     })
 
@@ -47,7 +50,7 @@ function Register() {
                             type="email"
                             required
                             className="mt-1 appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Enter your email"
+                            placeholder="Điền email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -62,7 +65,7 @@ function Register() {
                             type="password"
                             required
                             className="mt-1 appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Enter your password"
+                            placeholder="Điền mật khẩu"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -77,7 +80,7 @@ function Register() {
                             type="password"
                             required
                             className="mt-1 appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Confirm your password"
+                            placeholder="Xác nhận mật khẩu"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />

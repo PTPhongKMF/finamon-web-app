@@ -1,21 +1,38 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ky } from '../api/ky';
 import { useMutation } from '@tanstack/react-query';
+import { useAuth } from '../contexts/AuthContext';
+import Cookies from 'js-cookie';
 
 function Login() {
+    const { setUser } = useAuth();
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const doLogin = useMutation({
         mutationFn: async () => {
-            await new Promise(resolve => setTimeout(resolve, 3000));
             return await ky.post("http://localhost:5296/api/auth/login", {
                 json: {
                     email,
                     password
                 }
             }).json();
+        },
+        onSuccess: (data) => {
+            if (data.isBanned) throw new Error("Bạn đã bị cấm, liên hệ hỗ trợ nếu bạn nghĩ đây là sai lầm");
+            if (data.requiresVerification) console.log("test");
+
+            console.log(data);
+            setUser({
+                userName: data.data.user.userName,
+                roles: data.data.user.userRoles,
+                image: data.data.user.image ??  null,
+            });
+            Cookies.set("token", data.data.user.token);
+            navigate("/");
         }
     })
 
@@ -42,7 +59,7 @@ function Login() {
                         type="email"
                         required
                         className="mt-1 appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Enter your email"
+                        placeholder="Điền email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -55,7 +72,7 @@ function Login() {
                         type="password"
                         required
                         className="mt-1 appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Enter your password"
+                        placeholder="Điền mật khẩu"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />

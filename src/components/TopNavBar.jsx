@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./shadcn/HoverCard";
 
 function TopNavBar() {
   const { pathname } = useLocation();
@@ -41,7 +42,19 @@ function TopNavBar() {
         <div className="flex justify-self-end">
           {user ? (
             <>
-              <img src="https://i.pravatar.cc/40" alt="User Avatar" className="w-10 h-10 rounded-full object-cover border-2 border-gray-200 mx-4" />
+              <HoverCard>
+                <HoverCardTrigger>
+                  <img src={user.image ?? "https://i.pravatar.cc/40"} alt="User Avatar" className="w-10 h-10 rounded-full object-cover border-2 border-gray-200 mx-4" />
+                </HoverCardTrigger>
+
+                <HoverCardContent>
+                  <nav className="flex flex-col gap-2 p-2 text-sm text-gray-700 bg-[url(/images/navbar_bg.svg)] bg-cover">
+                  <Link to="" className="block p-2 hover:border-b-2 hover:border-green-300 w-full">Tài Khoản</Link>
+                  <Link to="/logout" className="block rounded-md p-2 hover:border-2 hover:border-red-300 w-full">Đăng Xuất</Link>
+                  </nav>
+                </HoverCardContent>
+              </HoverCard>
+
               <Link to="/app"
                 className="px-4 py-2 mx-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
               >
