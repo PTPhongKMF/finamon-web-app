@@ -5,12 +5,12 @@ function NotFound() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 relative overflow-hidden">
       <div className="text-center relative z-10">
         <h1 className="text-6xl font-bold text-gray-800 mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-8">Oops! Page not found.</p>
+        <p className="text-xl text-gray-600 mb-8">Ôi trời! Không tìm thấy trang này.</p>
         <Link
           to="/"
           className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-700 transition-colors"
         >
-          Go Back Home
+          Về trang chủ
         </Link>
       </div>
     </div>

@@ -7,7 +7,7 @@ function TopNavBar() {
   const { user } = useAuth();
 
   return (
-    <header className="w-full bg-white shadow px-6 py-3 sticky top-0 z-50 bg-[url(/images/navbar_bg.svg)] bg-cover">
+    <header className="w-full bg-white shadow px-6 py-2 sticky top-0 z-50 bg-[url(/images/navbar_bg.svg)] bg-cover">
 
       <div className="grid grid-cols-3 items-center">
         <div className="justify-self-start">
