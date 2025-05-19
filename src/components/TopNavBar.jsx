@@ -57,9 +57,9 @@ function TopNavBar() {
                 </HoverCardTrigger>
 
                 <HoverCardContent>
-                  <nav className="flex flex-col gap-2 p-2 text-sm text-gray-700 bg-[url(/images/navbar_bg.svg)] bg-cover">
-                    <Link to="" className="block p-2 hover:border-b-2 hover:border-green-300 w-full">Tài Khoản</Link>
-                    <Link to="/logout" className="block rounded-md p-2 hover:border-2 hover:border-red-300 w-full">Đăng Xuất</Link>
+                  <nav className="flex flex-col rounded-md gap-2 p-2 text-sm text-gray-700 bg-[url(/images/navbar_bg.svg)] bg-cover">
+                    <Link to="" className="block p-2 border-b-2 border-transparent hover:border-b-2 hover:border-green-300 w-full">Tài Khoản</Link>
+                    <Link to="/logout" className="block rounded-md p-2 border-2 border-transparent hover:border-2 hover:border-red-300 w-full">Đăng Xuất</Link>
                   </nav>
                 </HoverCardContent>
               </HoverCard>

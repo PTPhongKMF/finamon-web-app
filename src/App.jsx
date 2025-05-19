@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import AppLayout from "./components/wrapper/AppLayout";
+import SiteLayout from "./components/wrapper/SiteLayout";
 import Blog from "./pages/Blog";
 import Feature from "./pages/Feature";
 import Pricing from "./pages/Pricing";
@@ -11,13 +11,14 @@ import AuthContextProvider from "./contexts/AuthContextProvider";
 import Logout from "./pages/Logout";
 import Overview from "./pages/Overview";
 import ProtectedRoute from "./components/wrapper/ProtectedRoute";
+import AppLayout from "./components/wrapper/AppLayout";
 
 function App() {
 
   return (
     <AuthContextProvider>
       <Routes>
-        <Route element={<AppLayout />}>
+        <Route element={<SiteLayout />}>
           <Route index element={<Home />} />
           <Route path="/blogs" element={<Blog />} />
           <Route path="/features" element={<Feature />} />
@@ -28,7 +29,7 @@ function App() {
           <Route path="/logout" element={<Logout />} />
 
           <Route element={<ProtectedRoute allowedRoles={["customer", "staff", "admin"]} />}>
-            <Route path="/app">
+            <Route path="/app" element={<AppLayout/>}>
               <Route index element={<Overview />} />
             </Route>
           </Route>

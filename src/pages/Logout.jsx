@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 function Logout() {
@@ -9,14 +8,12 @@ function Logout() {
 
   useEffect(() => {
     setUser(null);
-    Cookies.remove("token");
-
     navigate("/");
-  })
+  }, [setUser, navigate]);
 
-  return ( 
+  return (
     <></>
-   );
+  );
 }
 
 export default Logout;

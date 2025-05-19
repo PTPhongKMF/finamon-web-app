@@ -26,12 +26,13 @@ function Login() {
             if (data.requiresVerification) console.log("test");
 
             console.log(data);
+            Cookies.set("token", data.data.token);
             setUser({
-                userName: data.data.user.userName,
-                roles: data.data.user.userRoles,
-                image: data.data.user.image ??  null,
+                userName: data?.data?.user?.userName ?? null,
+                roles: data?.data?.user?.userRoles ?? [],
+                image: data?.data?.user?.image ??  null,
             });
-            Cookies.set("token", data.data.user.token);
+
             navigate("/");
         }
     })
