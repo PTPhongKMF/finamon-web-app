@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
-import { ky } from '../api/ky';
+import { ky } from '../../api/ky';
 import { Link } from 'react-router-dom';
 
 function Register() {

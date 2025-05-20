@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function ProtectedRoute(props) {
   const { user } = useAuth();
@@ -18,7 +18,7 @@ function ProtectedRoute(props) {
     }
   }, [user, navigate, props.allowedRoles])
 
-  return props.children;
+  return <Outlet/>;
 }
 
 export default ProtectedRoute;
