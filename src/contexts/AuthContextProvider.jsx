@@ -18,6 +18,7 @@ useEffect(() => {
   } else {
     localStorage.removeItem("user");
     setUser(null);
+    Cookies.remove("token");
   }
 }, [user])
 

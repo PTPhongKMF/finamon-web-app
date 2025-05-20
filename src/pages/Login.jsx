@@ -26,6 +26,9 @@ function Login() {
             if (data.requiresVerification) console.log("test");
 
             console.log(data);
+
+            if (!data.data) throw new Error("Lỗi server")
+
             Cookies.set("token", data.data.token);
             setUser({
                 userName: data?.data?.user?.userName ?? null,

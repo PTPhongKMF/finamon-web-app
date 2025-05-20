@@ -6,13 +6,24 @@ function TopNavBar() {
   const { pathname } = useLocation();
   const { user } = useAuth();
 
+  const isAppRoute = pathname.startsWith("/app");
+
   return (
-    <header className="w-full bg-white shadow px-6 py-2 sticky top-0 z-50 bg-[url(/images/navbar_bg.svg)] bg-cover">
+    <header className={`w-full bg-white shadow px-6 py-2 sticky top-0 z-50 border-b-8 border-yellow-400`}>
+
+      <div
+        className={`z-[-1] absolute inset-0 bg-cover bg-[url('/images/navbar_bg.jpg')] transition-opacity duration-700 ease-in-out ${isAppRoute ? "opacity-100" : "opacity-0"
+          }`}
+      />
+      <div
+        className={`z-[-1] absolute inset-0 bg-cover bg-[url('/images/navbar_bg.svg')] transition-opacity duration-700 ease-in-out ${isAppRoute ? "opacity-0" : "opacity-100"
+          }`}
+      />
 
       <div className="grid grid-cols-3 items-center">
         <div className="justify-self-start">
           <h1 className="text-4xl font-bold text-amber-400 hover:text-yellow-500 ml-20">
-            {pathname.startsWith("/app") ? (
+            {isAppRoute ? (
               "Sổ Chi Tiêu"
             ) : (
               <Link to="/">Finamon</Link>
@@ -20,7 +31,7 @@ function TopNavBar() {
           </h1>
         </div>
 
-        {pathname.startsWith("/app") ? (
+        {isAppRoute ? (
           <div></div>
         ) : (
           <nav className="justify-self-center flex justify-center gap-10 text-gray-600 font-semibold text-lg">
@@ -64,11 +75,19 @@ function TopNavBar() {
                 </HoverCardContent>
               </HoverCard>
 
-              <Link to="/app"
-                className="px-4 py-2 mx-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
-              >
-                Đến sổ quản lí
-              </Link>
+              {isAppRoute ? (
+                <Link to="/"
+                  className="px-4 py-2 mx-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
+                >
+                  Thoát sổ quản lí
+                </Link>
+              ) : (
+                <Link to="/app"
+                  className="px-4 py-2 mx-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
+                >
+                  Đến sổ quản lí
+                </Link>
+              )}
             </>
           ) : (
             <Link to="/login"
@@ -79,9 +98,9 @@ function TopNavBar() {
           )}
 
         </div>
-      </div>
+      </div >
 
-    </header>
+    </header >
   );
 }
 
