@@ -23,17 +23,21 @@ function Login() {
         },
         onSuccess: (data) => {
             if (data.isBanned) throw new Error("Bạn đã bị cấm, liên hệ hỗ trợ nếu bạn nghĩ đây là sai lầm");
-            if (data.requiresVerification) console.log("test");
 
             console.log(data);
 
             if (!data.data) throw new Error("Lỗi server")
 
+            if (data.requiresVerification) {
+                navigate("/verify-account", { state: { email: email } });
+                return;
+            }
+
             Cookies.set("token", data.data.token);
             setUser({
                 userName: data?.data?.user?.userName ?? null,
                 roles: data?.data?.user?.userRoles ?? [],
-                image: data?.data?.user?.image ??  "https://st4.depositphotos.com/11634452/21365/v/450/depositphotos_213659488-stock-illustration-picture-profile-icon-human-people.jpg",
+                image: data?.data?.user?.image ?? "https://st4.depositphotos.com/11634452/21365/v/450/depositphotos_213659488-stock-illustration-picture-profile-icon-human-people.jpg",
             });
 
             navigate("/");

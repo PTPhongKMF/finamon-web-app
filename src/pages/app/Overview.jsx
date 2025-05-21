@@ -32,9 +32,7 @@ function Overview() {
   return (
     <section className="w-full p-4">
 
-      <ChartContainer>
-        
-      </ChartContainer>
+      
 
     </section>
   );
