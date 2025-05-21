@@ -22,11 +22,17 @@ function TopNavBar() {
 
       <div className="grid grid-cols-3 items-center">
         <div className="justify-self-start">
-          <h1 className="text-4xl font-bold text-amber-400 hover:text-yellow-500 ml-20">
+          <h1 className="text-4xl font-bold text-amber-400 hover:text-yellow-500 ml-20 flex items-center gap-2">
             {isAppRoute ? (
-              "Sổ Chi Tiêu"
+              <>
+              <img src="/logo/finamon.svg" alt="Finamon Logo" width="45" height="45" />
+              Sổ Chi Tiêu
+              </>
             ) : (
-              <Link to="/">Finamon</Link>
+              <>
+                <img src="/logo/finamon.svg" alt="Finamon Logo" width="45" height="45" />
+                <Link to="/">Finamon</Link>
+              </>
             )}
           </h1>
         </div>

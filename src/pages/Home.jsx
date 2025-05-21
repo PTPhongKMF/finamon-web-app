@@ -8,7 +8,7 @@ function Home() {
       <section className="bg-gradient-to-r from-green-500 to-green-700 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Quản lý chi tiêu cá nhân dễ dàng
+            Quản lý chi tiêu cá nhân dễ dàng với sự <br/> trợ giúp của AI
           </h2>
           <p className="text-lg md:text-xl mb-6 text-yellow-200">
             Ứng dụng giúp bạn kiểm soát tài chính, tiết kiệm và đầu tư hiệu quả.
