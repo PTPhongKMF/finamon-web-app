@@ -291,15 +291,15 @@ function Home() {
         </div>
       </section>
 
-      <section class="py-16 bg-gradient-to-b from-yellow-50 to-white">
-        <div class="flex flex-col gap-2 items-center">
+      <section className="py-16 bg-gradient-to-b from-yellow-50 to-white">
+        <div className="flex flex-col gap-2 items-center">
           <h3 className="text-3xl font-bold text-center mb-12 text-green-700">
             Thông tin liên hệ
           </h3>
-          <div class="flex flex-row gap-2">
-            <button class="w-[140px] h-[140px] outline-none border-none bg-white rounded-[140px_5px_5px_5px] shadow-lg transition-all duration-200 ease-in-out hover:scale-110 hover:bg-[#cc39a4] group flex items-center justify-center">
+          <div className="flex flex-row gap-2">
+            <button className="w-[140px] h-[140px] outline-none border-none bg-white rounded-[140px_5px_5px_5px] shadow-lg transition-all duration-200 ease-in-out hover:scale-110 hover:bg-[#cc39a4] group flex items-center justify-center">
               <svg
-                class="mt-6 ml-5 fill-[#cc39a4] group-hover:fill-white"
+                className="mt-6 ml-5 fill-[#cc39a4] group-hover:fill-white"
                 height="30"
                 width="30"
                 viewBox="0,0,256,256"
@@ -313,9 +313,9 @@ function Home() {
               </svg>
             </button>
 
-            <button class="w-[140px] h-[140px] outline-none border-none bg-white rounded-[5px_140px_5px_5px] shadow-lg transition-all duration-200 ease-in-out hover:scale-110 hover:bg-[#03A9F4] group flex items-center justify-center">
+            <button className="w-[140px] h-[140px] outline-none border-none bg-white rounded-[5px_140px_5px_5px] shadow-lg transition-all duration-200 ease-in-out hover:scale-110 hover:bg-[#03A9F4] group flex items-center justify-center">
               <svg
-                class="mt-6 -ml-4 fill-[#03A9F4] group-hover:fill-white"
+                className="mt-6 -ml-4 fill-[#03A9F4] group-hover:fill-white"
                 height="30"
                 width="30"
                 viewBox="0 0 48 48"
@@ -326,10 +326,10 @@ function Home() {
             </button>
           </div>
 
-          <div class="flex flex-row gap-2">
-            <button class="w-[140px] h-[140px] outline-none border-none bg-white rounded-[5px_5px_5px_140px] shadow-lg transition-all duration-200 ease-in-out hover:scale-110 hover:bg-black group flex items-center justify-center">
+          <div className="flex flex-row gap-2">
+            <button className="w-[140px] h-[140px] outline-none border-none bg-white rounded-[5px_5px_5px_140px] shadow-lg transition-all duration-200 ease-in-out hover:scale-110 hover:bg-black group flex items-center justify-center">
               <svg
-                class="mt-[-0.375rem] ml-5 fill-black group-hover:fill-white"
+                className="mt-[-0.375rem] ml-5 fill-black group-hover:fill-white"
                 height="30"
                 width="30"
                 viewBox="0 0 30 30"
@@ -339,9 +339,9 @@ function Home() {
               </svg>
             </button>
 
-            <button class="w-[140px] h-[140px] outline-none border-none bg-white rounded-[5px_5px_140px_5px] shadow-lg transition-all duration-200 ease-in-out hover:scale-110 hover:bg-[#8c9eff] group flex items-center justify-center">
+            <button className="w-[140px] h-[140px] outline-none border-none bg-white rounded-[5px_5px_140px_5px] shadow-lg transition-all duration-200 ease-in-out hover:scale-110 hover:bg-[#8c9eff] group flex items-center justify-center">
               <svg
-                class="mt-[-0.563rem] -ml-5 fill-[#8c9eff] group-hover:fill-white"
+                className="mt-[-0.563rem] -ml-5 fill-[#8c9eff] group-hover:fill-white"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
                 width="30"
