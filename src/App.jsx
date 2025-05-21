@@ -13,6 +13,7 @@ import Overview from "./pages/app/Overview";
 import ProtectedRoute from "./components/wrapper/ProtectedRoute";
 import AppLayout from "./components/wrapper/AppLayout";
 import { Component } from "./pages/app/testOverview";
+import VerifyAccount from "./pages/auth/VerifyAccount";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/verify-account" element={<VerifyAccount />} />
           <Route path="/logout" element={<Logout />} />
 
           <Route element={<ProtectedRoute allowedRoles={["customer", "staff", "admin"]} />}>

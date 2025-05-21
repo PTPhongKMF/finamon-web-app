@@ -9,7 +9,7 @@ function TopNavBar() {
   const isAppRoute = pathname.startsWith("/app");
 
   return (
-    <header className={`w-full bg-white shadow px-6 py-2 sticky top-0 z-50 border-b-8 border-yellow-400`}>
+    <header className={`w-full bg-white shadow px-6 py-2 sticky top-0 z-50 border-b-4 border-yellow-400`}>
 
       <div
         className={`z-[-1] absolute inset-0 bg-cover bg-[url('/images/navbar_bg.jpg')] transition-opacity duration-700 ease-in-out ${isAppRoute ? "opacity-100" : "opacity-0"

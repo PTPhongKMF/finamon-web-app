@@ -1,9 +1,11 @@
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { ky } from '../../api/ky';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -11,9 +13,12 @@ function Register() {
     const doRegister = useMutation({
         onMutate: () => {
             if (password !== confirmPassword) throw new Error("Mật khẩu không trùng khớp");
+            if (password.length < 6) throw new Error("Mật khẩu phải có ít nhất 6 chữ số");
         },
         mutationFn: async () => {
-            await new Promise(resolve => setTimeout(resolve, 3000));
+            console.log("email: " + email);
+            console.log("password: " + password);
+
             return await ky.post("http://localhost:5296/api/auth/register", {
                 json: {
                     email,
@@ -21,8 +26,8 @@ function Register() {
                 }
             }).json();
         },
-        onSuccess: (data) => {
-            
+        onSuccess: () => {
+            navigate("/verify-account", { state: { email: email } });
         }
     })
 
