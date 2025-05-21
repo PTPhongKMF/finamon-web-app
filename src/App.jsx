@@ -12,6 +12,7 @@ import Logout from "./pages/auth/Logout";
 import Overview from "./pages/app/Overview";
 import ProtectedRoute from "./components/wrapper/ProtectedRoute";
 import AppLayout from "./components/wrapper/AppLayout";
+import { Component } from "./pages/app/testOverview";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route element={<ProtectedRoute allowedRoles={["customer", "staff", "admin"]} />}>
             <Route path="/app" element={<AppLayout/>}>
               <Route index element={<Overview />} />
+              <Route path="t" element={<Component />} />
             </Route>
           </Route>
 

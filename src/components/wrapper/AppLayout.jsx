@@ -3,13 +3,11 @@ import LeftSideBar from "../LeftSideBar";
 
 function AppLayout() {
    return (
-      <div className="grid grid-cols-[13rem_1fr] h-100 mt-2">
+      <div className="grid grid-cols-[13rem_1fr] h-100 mt-2 pt-8 gap-4">
 
          <LeftSideBar />
 
-         <main className="w-full bg-blue-500 pl-4">
-            <Outlet />
-         </main>
+         <Outlet />
 
       </div>
    );

@@ -1,13 +1,15 @@
 import { ChevronFirst } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function LeftSideBar() {
-  return (
-    <nav className="w-full border-r-2 rounded-r border-gray-400 bg-red-500 flex flex-col gap-4 px-4 py-2">
-      <ChevronFirst className="mb-2"/>
+  const { pathname } = useLocation();
 
-      <Link className="text-lg font-bold">
-      Tổng Quan
+  return (
+    <nav className="w-full rounded-md flex flex-col gap-4 px-4 py-2 shadow-sm">
+      <ChevronFirst className="mb-2" />
+
+      <Link className={`text-lg pb-1 border-b-3 ${pathname.endsWith("app") ? "border-transparent" : "border-blue-600"}`}>
+        Tổng Quan
       </Link>
       <Link>Tổng Quan 2</Link>
       <Link>Tổng Quan 3</Link>
