@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ky } from '../api/ky';
+import { ky } from '../../api/ky';
 import { useMutation } from '@tanstack/react-query';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import Cookies from 'js-cookie';
 
 function Login() {
@@ -33,7 +33,7 @@ function Login() {
             setUser({
                 userName: data?.data?.user?.userName ?? null,
                 roles: data?.data?.user?.userRoles ?? [],
-                image: data?.data?.user?.image ??  null,
+                image: data?.data?.user?.image ??  "https://st4.depositphotos.com/11634452/21365/v/450/depositphotos_213659488-stock-illustration-picture-profile-icon-human-people.jpg",
             });
 
             navigate("/");

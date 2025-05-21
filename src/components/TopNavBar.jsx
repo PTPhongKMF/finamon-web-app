@@ -62,9 +62,9 @@ function TopNavBar() {
         <div className="flex justify-self-end">
           {user ? (
             <>
-              <HoverCard>
+              <HoverCard openDelay={0} closeDelay={50}>
                 <HoverCardTrigger>
-                  <img src={user.image ?? "https://i.pravatar.cc/40"} alt="User Avatar" className="w-10 h-10 rounded-full object-cover border-2 border-gray-200 mx-4" />
+                  <img src={user.image} alt="User Avatar" className="w-10 h-10 rounded-full object-cover border-2 border-gray-200 mx-4" />
                 </HoverCardTrigger>
 
                 <HoverCardContent>

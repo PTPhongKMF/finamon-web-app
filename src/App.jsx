@@ -4,14 +4,15 @@ import SiteLayout from "./components/wrapper/SiteLayout";
 import Blog from "./pages/Blog";
 import Feature from "./pages/Feature";
 import Pricing from "./pages/Pricing";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 import NotFound from "./pages/NotFound";
 import AuthContextProvider from "./contexts/AuthContextProvider";
-import Logout from "./pages/Logout";
-import Overview from "./pages/Overview";
+import Logout from "./pages/auth/Logout";
+import Overview from "./pages/app/Overview";
 import ProtectedRoute from "./components/wrapper/ProtectedRoute";
 import AppLayout from "./components/wrapper/AppLayout";
+import { Component } from "./pages/app/testOverview";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route element={<ProtectedRoute allowedRoles={["customer", "staff", "admin"]} />}>
             <Route path="/app" element={<AppLayout/>}>
               <Route index element={<Overview />} />
+              <Route path="t" element={<Component />} />
             </Route>
           </Route>
 

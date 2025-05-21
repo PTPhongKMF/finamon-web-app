@@ -1,17 +1,15 @@
-function AppLayout(props) {
+import { Outlet } from "react-router-dom";
+import LeftSideBar from "../LeftSideBar";
+
+function AppLayout() {
    return (
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-[13rem_1fr] h-100 mt-2 pt-8 gap-4">
 
-         <nav className="border-r-2 border-gray-700">
+         <LeftSideBar />
 
-         </nav>
-
-         <main>
-            {props.children}
-         </main>
+         <Outlet />
 
       </div>
-
    );
 }
 
