@@ -31,7 +31,7 @@ function App() {
           <Route path="/verify-account" element={<VerifyAccount />} />
           <Route path="/logout" element={<Logout />} />
 
-          <Route element={<ProtectedRoute allowedRoles={["customer", "staff", "admin"]} />}>
+          <Route element={<ProtectedRoute allowedRoles={["Customer", "Staff", "Admin"]} />}>
             <Route path="/app" element={<AppLayout/>}>
               <Route index element={<Overview />} />
               <Route path="t" element={<Component />} />

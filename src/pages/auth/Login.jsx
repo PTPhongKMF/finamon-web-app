@@ -26,8 +26,6 @@ function Login() {
 
             console.log(data);
 
-            if (!data.data) throw new Error("Lỗi server")
-
             if (data.requiresVerification) {
                 navigate("/verify-account", { state: { email: email } });
                 return;
