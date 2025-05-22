@@ -16,9 +16,6 @@ function Register() {
             if (password.length < 6) throw new Error("Mật khẩu phải có ít nhất 6 chữ số");
         },
         mutationFn: async () => {
-            console.log("email: " + email);
-            console.log("password: " + password);
-
             return await ky.post("http://localhost:5296/api/auth/register", {
                 json: {
                     email,
