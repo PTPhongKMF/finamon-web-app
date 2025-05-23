@@ -9,11 +9,14 @@ import Register from "./pages/auth/Register";
 import NotFound from "./pages/NotFound";
 import AuthContextProvider from "./contexts/AuthContextProvider";
 import Logout from "./pages/auth/Logout";
-import Overview from "./pages/app/Overview";
+import AppOverview from "./pages/app/AppOverview";
 import ProtectedRoute from "./components/wrapper/ProtectedRoute";
 import AppLayout from "./components/wrapper/AppLayout";
 import { Component } from "./pages/app/testOverview";
 import VerifyAccount from "./pages/auth/VerifyAccount";
+import DashboardLayout from "./components/wrapper/DashboardLayout";
+import StaffDbOverview from "./pages/dashboard/staff/StaffDbOverview";
+import StaffDbBlog from "./pages/dashboard/staff/StaffDbBlog";
 
 function App() {
 
@@ -33,10 +36,23 @@ function App() {
 
           <Route element={<ProtectedRoute allowedRoles={["Customer", "Staff", "Admin"]} />}>
             <Route path="/app" element={<AppLayout/>}>
-              <Route index element={<Overview />} />
+              <Route index element={<AppOverview />} />
               <Route path="t" element={<Component />} />
             </Route>
           </Route>
+
+          <Route element={<ProtectedRoute allowedRoles={["Staff", "Admin"]} />}>
+            <Route path="/dashboard/staff" element={<DashboardLayout/>}>
+              <Route index element={<StaffDbOverview />} />
+              <Route path="blogs" element={<StaffDbBlog />} />
+            </Route>
+          </Route>
+
+          {/* <Route element={<ProtectedRoute allowedRoles={["Admin"]} />}>
+            <Route path="/dashboard/admin" element={<StaffDashboardLayout/>}>
+              <Route index element={<AppOverview />} />
+            </Route>
+          </Route> */}
 
           <Route path="*" element={<NotFound />} />
         </Route>
