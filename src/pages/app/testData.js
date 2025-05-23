@@ -1,11 +1,11 @@
-// Categories array
+// Categories array with name and color
 export const categories = [
-  "Electronics",
-  "Clothing",
-  "Books",
-  "Furniture",
-  "Toys",
-  "Groceries"
+  { name: "Electronics", color: "#4A90E2" },   // Blue
+  { name: "Clothing", color: "#E94E77" },      // Pinkish Red
+  { name: "Books", color: "#F5A623" },         // Orange
+  { name: "Furniture", color: "#7ED6DF" },     // Light Cyan
+  { name: "Toys", color: "#50E3C2" },          // Turquoise
+  { name: "Groceries", color: "#B8E986" }      // Light Green
 ];
 
 // Items array with name, category, and cost (in USD)
@@ -16,7 +16,7 @@ export const items = [
   { name: "Tablet", category: "Electronics", cost: 349 },
   { name: "Monitor", category: "Electronics", cost: 199 },
   { name: "Camera", category: "Electronics", cost: 499 },
-  
+
   { name: "T-shirt", category: "Clothing", cost: 15 },
   { name: "Jeans", category: "Clothing", cost: 45 },
   { name: "Jacket", category: "Clothing", cost: 80 },
