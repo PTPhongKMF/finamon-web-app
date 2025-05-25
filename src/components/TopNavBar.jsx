@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "./shadcn/hovercard";
+import UserAvatar from "./UserAvatar";
 
 function TopNavBar() {
   const { pathname } = useLocation();
@@ -11,7 +11,47 @@ function TopNavBar() {
   const isStaffDbRoute = pathname.startsWith("/dashboard/staff");
   const isAdminDbRoute = pathname.startsWith("/dashboard/admin");
 
-  if (isAppRoute) {
+  if (isDashboardRoute) {
+    return (
+      <header className="w-full bg-white shadow px-6 py-2">
+
+        <div className="grid grid-cols-2">
+          <h1 className="text-4xl font-bold">
+            {isStaffDbRoute && (
+              <p>Staff Dashboard</p>
+            )}
+            {isAdminDbRoute && (
+              <p>Admin Dashboard</p>
+            )}
+          </h1>
+
+          <div className="flex gap-4 justify-end">
+            {(user?.roles?.some(role => role === "Staff") && isDashboardRoute && !isStaffDbRoute) && (
+              <Link to="/dashboard/staff"
+                className="px-4 py-2 mx-2 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
+              >
+                Staff Dashboard
+              </Link>
+            )}
+
+            {(user?.roles?.some(role => role === "Admin") && isDashboardRoute && !isAdminDbRoute) && (
+              <Link to="/dashboard/admin"
+                className="px-4 py-2 mx-2 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
+              >
+                Admin Dashboard
+              </Link>
+            )}
+
+            {user && (
+              <UserAvatar />
+            )}
+          </div>
+        </div>
+
+
+      </header>
+    )
+  } else {
     return (
       <header className={`w-full bg-white shadow px-6 py-2 sticky top-0 z-50 border-b-4 border-yellow-400`}>
 
@@ -72,18 +112,7 @@ function TopNavBar() {
           <div className="flex justify-self-end gap-2">
             {user ? (
               <>
-                <HoverCard openDelay={0} closeDelay={50}>
-                  <HoverCardTrigger>
-                    <img src={user.image} alt="User Avatar" className="w-10 h-10 rounded-full object-cover border-2 border-gray-200 mx-4" />
-                  </HoverCardTrigger>
-
-                  <HoverCardContent>
-                    <nav className="flex flex-col rounded-md gap-2 p-2 text-sm text-gray-700 bg-[url(/images/navbar_bg.svg)] bg-cover">
-                      <Link to="" className="block p-2 border-b-2 border-transparent hover:border-b-2 hover:border-green-300 w-full">Tài Khoản</Link>
-                      <Link to="/logout" className="block rounded-md p-2 border-2 border-transparent hover:border-2 hover:border-red-300 w-full">Đăng Xuất</Link>
-                    </nav>
-                  </HoverCardContent>
-                </HoverCard>
+                <UserAvatar />
 
                 {!isDashboardRoute && (
                   isAppRoute ? (
@@ -113,57 +142,7 @@ function TopNavBar() {
 
       </header >
     );
-  } else {
-    return (
-      <header className="w-full bg-white shadow px-6 py-2">
-
-        <div className="grid grid-cols-2">
-          <h1 className="text-4xl font-bold">
-            {isStaffDbRoute ? (
-              <p>Staff Dashboard</p>
-            ) : (
-              <p>Admin Dashboard</p>
-            )}
-          </h1>
-
-          <div className="flex gap-4 justify-end">
-            {(user?.roles?.some(role => role === "Staff") && !isStaffDbRoute) && (
-              <Link to="/dashboard/staff"
-                className="px-4 py-2 mx-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
-              >
-                Staff Dashboard
-              </Link>
-            )}
-
-            {(user?.roles?.some(role => role === "Admin") && !isAdminDbRoute) && (
-              <Link to="/dashboard/admin"
-                className="px-4 py-2 mx-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
-              >
-                Admin Dashboard
-              </Link>
-            )}
-
-            {user && (
-              <HoverCard openDelay={0} closeDelay={50}>
-                <HoverCardTrigger>
-                  <img src={user.image} alt="User Avatar" className="w-10 h-10 rounded-full object-cover border-2 border-gray-200 mx-4" />
-                </HoverCardTrigger>
-
-                <HoverCardContent>
-                  <nav className="flex flex-col rounded-md gap-2 p-2 text-sm text-gray-700 bg-[url(/images/navbar_bg.svg)] bg-cover">
-                    <Link to="" className="block p-2 border-b-2 border-transparent hover:border-b-2 hover:border-green-300 w-full">Tài Khoản</Link>
-                    <Link to="/logout" className="block rounded-md p-2 border-2 border-transparent hover:border-2 hover:border-red-300 w-full">Đăng Xuất</Link>
-                  </nav>
-                </HoverCardContent>
-              </HoverCard>
-            )}
-          </div>
-        </div>
-
-
-      </header>
-    )
-  }
+  } 
 }
 
 export default TopNavBar;
