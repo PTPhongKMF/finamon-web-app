@@ -17,11 +17,13 @@ import VerifyAccount from "./pages/auth/VerifyAccount";
 import DashboardLayout from "./components/wrapper/DashboardLayout";
 import StaffDbOverview from "./pages/dashboard/staff/StaffDbOverview";
 import StaffDbBlog from "./pages/dashboard/staff/StaffDbBlog";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
 
   return (
     <AuthContextProvider>
+      <ScrollToTop />
       <Routes>
         <Route element={<SiteLayout />}>
           <Route index element={<Home />} />
