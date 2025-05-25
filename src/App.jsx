@@ -17,11 +17,16 @@ import VerifyAccount from "./pages/auth/VerifyAccount";
 import DashboardLayout from "./components/wrapper/DashboardLayout";
 import StaffDbOverview from "./pages/dashboard/staff/StaffDbOverview";
 import StaffDbBlog from "./pages/dashboard/staff/StaffDbBlog";
+import ScrollToTop from "./components/ScrollToTop";
+import ProfileLayout from "./components/wrapper/ProfileLayout";
+import UserProfile from "./pages/profile/UserProfile";
 
 function App() {
 
   return (
     <AuthContextProvider>
+      <ScrollToTop />
+      
       <Routes>
         <Route element={<SiteLayout />}>
           <Route index element={<Home />} />
@@ -35,6 +40,10 @@ function App() {
           <Route path="/logout" element={<Logout />} />
 
           <Route element={<ProtectedRoute allowedRoles={["Customer", "Staff", "Admin"]} />}>
+            <Route path="/profile" element={<ProfileLayout/>}>
+              <Route index element={<UserProfile />} />
+            </Route>
+
             <Route path="/app" element={<AppLayout/>}>
               <Route index element={<AppOverview />} />
               <Route path="t" element={<Component />} />
@@ -57,6 +66,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+
     </AuthContextProvider>
   )
 }

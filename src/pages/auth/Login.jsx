@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import Cookies from 'js-cookie';
 
 function Login() {
-    const { user, setUser } = useAuth();
+    const { setUser } = useAuth();
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -32,18 +32,19 @@ function Login() {
             }
 
             Cookies.set("token", data.data.token);
+            const userRoles = data?.data?.user?.userRoles?.map(role => role.roleName) ?? [];
             setUser({
-                userName: data?.data?.user?.userName ?? null,
-                roles: data?.data?.user?.userRoles?.map(role => role.roleName) ?? [],
+                name: data?.data?.user?.userName ?? data?.data?.user?.email.split("@")[0],
+                roles: userRoles,
                 image: data?.data?.user?.image ?? "https://st4.depositphotos.com/11634452/21365/v/450/depositphotos_213659488-stock-illustration-picture-profile-icon-human-people.jpg",
             });
 
-            if (user.roles.some(role => role === "Staff")) {
+            if (userRoles.some(role => role === "Staff")) {
                 navigate("/dashboard/staff");
                 return;
             }
 
-            if (user.roles.some(role => role === "Admin")) {
+            if (userRoles.some(role => role === "Admin")) {
                 navigate("/dashboard/admin");
                 return;
             }

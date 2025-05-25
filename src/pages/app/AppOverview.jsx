@@ -1,16 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../../components/shadcn/ui/chart";
+import { ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from "../../components/shadcn/ui/chart";
 // import { useQuery } from "@tanstack/react-query";
 import { categories, items } from "./testData";
 import { Label, Pie, PieChart } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/shadcn/ui/card";
-import { format } from "@formkit/tempo";
-import { SquareChevronDown } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/shadcn/select";
 
 
 function AppOverview() {
   const [chartConfig, setChartConfig] = useState();
   const [chartData, setChartData] = useState();
+  const [dateList, setDateList] = useState();
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const totalExpense = useMemo(() => {
@@ -63,27 +63,34 @@ function AppOverview() {
   }, [])
 
   return (
-    <article className="w-full grid grid-rows-[auto_auto] gap-2">
+    <article className="w-full grid auto-rows-auto gap-2">
 
       <section>
         <Card className="bg-linear-to-b from-green-400 to-green-600">
           <CardHeader>
-            <CardTitle className="flex text-4xl font-bold text-gray-100 gap-20">
+            <CardTitle className="flex items-center text-4xl font-bold text-gray-100 gap-20">
               <p>Tổng Quan Chi Tiêu</p>
-              <p className="text-6xl flex gap-8">
-                {format(selectedDate, "M, YYYY")}
-                <button><SquareChevronDown className="size-13 text-yellow-200 hover:text-yellow-400" /></button>
-              </p>
+              <Select defaultValue="4-2025">
+                <SelectTrigger className="max-w-[20rem] min-h-13 text-4xl font-bold">
+                  <SelectValue placeholder="Select" />
+                </SelectTrigger>
+                <SelectContent className="bg-green-200">
+                  <SelectItem value="2-2025">2-2025</SelectItem>
+                  <SelectItem value="3-2025">3-2025</SelectItem>
+                  <SelectItem value="4-2025">4-2025</SelectItem>
+                  <SelectItem value="5-2025">5-2025</SelectItem>
+                </SelectContent>
+              </Select>
             </CardTitle>
           </CardHeader>
         </Card>
       </section>
 
       <section>
-        <Card className="bg-gray-50">
+        <Card className="bg-neutral-50 border-t-8 border-x-2 border-yellow-400">
           <CardContent>
             {(chartConfig && chartData) && (
-              <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[20rem]">
+              <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[30rem]">
                 <PieChart>
                   <ChartTooltip
                     cursor={false}
@@ -133,6 +140,7 @@ function AppOverview() {
                   </Pie>
                 </PieChart>
               </ChartContainer>
+
             )}
           </CardContent>
         </Card>
