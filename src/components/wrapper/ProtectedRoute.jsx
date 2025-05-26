@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useAuth } from "../../contexts/AuthContext";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useUserStore } from "../../zustand/userStore";
 
 function ProtectedRoute(props) {
-  const { user } = useAuth();
+  const user = useUserStore(state => state.user);
   const navigate = useNavigate();
 
   useEffect(() => {

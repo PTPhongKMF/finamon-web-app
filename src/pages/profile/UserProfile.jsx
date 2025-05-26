@@ -1,10 +1,10 @@
 import { ImageUp } from "lucide-react";
 import { Separator } from "../../components/shadcn/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/shadcn/ui/card";
-import { useAuth } from "../../contexts/AuthContext";
+import { useUserStore } from "../../zustand/userStore";
 
 function UserProfile() {
-  const { user } = useAuth();
+  const user = useUserStore(state => state.user);
 
   async function handleImageUpload(e) {
     console.log(e.target.files[0]);

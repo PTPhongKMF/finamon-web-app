@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useUserStore } from "../../zustand/userStore";
 
 function Logout() {
-  const { setUser } = useAuth();
+  const setUser = useUserStore(state => state.setUser);
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ky } from '../../api/ky';
 import { useMutation } from '@tanstack/react-query';
-import { useAuth } from '../../contexts/AuthContext';
 import Cookies from 'js-cookie';
+import { useUserStore } from '../../zustand/userStore';
 
 function Login() {
-    const { setUser } = useAuth();
+  const setUser = useUserStore(state => state.setUser);
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');

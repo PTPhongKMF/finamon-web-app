@@ -1,10 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
 import UserAvatar from "./UserAvatar";
+import { useUserStore } from "../zustand/userStore";
 
 function TopNavBar() {
   const { pathname } = useLocation();
-  const { user } = useAuth();
+  const user = useUserStore(state => state.user);
 
   const isAppRoute = pathname.startsWith("/app");
   const isDashboardRoute = pathname.startsWith("/dashboard");

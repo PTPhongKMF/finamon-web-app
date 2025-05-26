@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import LeftSideBar from "../LeftSideBar";
-import { useAuth } from "../../contexts/AuthContext";
+import { useUserStore } from "../../zustand/userStore";
 
 function ProfileLayout() {
-  const { user } = useAuth();
+  const user = useUserStore(state => state.user);
 
   return (
     <div className="flex flex-col py-4 px-16 gap-8 bg-linear-to-br from-yellow-50 to-green-50">
