@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import UserAvatar from "./UserAvatar";
+// import UserAvatar from "./UserAvatar";
 import { useUserStore } from "../zustand/userStore";
 
 function TopNavBar() {
@@ -42,9 +42,9 @@ function TopNavBar() {
               </Link>
             )}
 
-            {user && (
+            {/* {user && (
               <UserAvatar />
-            )}
+            )} */}
           </div>
         </div>
 
@@ -112,7 +112,7 @@ function TopNavBar() {
           <div className="flex justify-self-end gap-2">
             {user ? (
               <>
-                <UserAvatar />
+                {/* <UserAvatar /> */}
 
                 {!isDashboardRoute && (
                   isAppRoute ? (
