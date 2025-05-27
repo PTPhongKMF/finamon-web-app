@@ -1,6 +1,6 @@
 import { useUserStore } from "../zustand/userStore";
 import { Link } from "react-router-dom";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "./shadcn/hovercard";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./shadcn/hovercard.jsx";
 
 function UserAvatar() {
   const user = useUserStore(state => state.user);
