@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
-import { ky } from '../../api/ky';
+import { kyAspDotnet } from '../../api/ky';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
@@ -16,7 +16,7 @@ function Register() {
             if (password.length < 6) throw new Error("Mật khẩu phải có ít nhất 6 chữ số");
         },
         mutationFn: async () => {
-            return await ky.post("http://localhost:5296/api/auth/register", {
+            return await kyAspDotnet.post("api/auth/register", {
                 json: {
                     email,
                     password
