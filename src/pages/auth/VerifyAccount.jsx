@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import { ky } from "../../api/ky";
+import { kyAspDotnet } from "../../api/ky";
 
 function VerifyAccount() {
   const location = useLocation();
@@ -27,7 +27,7 @@ function VerifyAccount() {
       if (verificationCode.length !== 6) throw new Error("Mã không hợp lệ!")
     },
     mutationFn: async () => {
-      return await ky.post("http://localhost:5296/api/auth/verify-email", {
+      return await kyAspDotnet.post("api/auth/verify-email", {
         json: {
           email: userEmail,
           verificationCode: verificationCode

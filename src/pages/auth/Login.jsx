@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ky } from '../../api/ky';
+import { kyAspDotnet } from '../../api/ky';
 import { useMutation } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
 import { useUserStore } from '../../zustand/userStore';
@@ -14,7 +14,7 @@ function Login() {
 
     const doLogin = useMutation({
         mutationFn: async () => {
-            return await ky.post("http://localhost:5296/api/auth/login", {
+            return await kyAspDotnet.post("api/auth/login", {
                 json: {
                     email,
                     password
