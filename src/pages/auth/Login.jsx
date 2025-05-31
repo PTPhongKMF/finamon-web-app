@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { useUserStore } from '../../zustand/userStore';
 
 function Login() {
-  const setUser = useUserStore(state => state.setUser);
+    const setUser = useUserStore(state => state.setUser);
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');

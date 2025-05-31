@@ -11,11 +11,10 @@ function Register() {
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const doRegister = useMutation({
-        onMutate: () => {
+        mutationFn: async () => {
             if (password !== confirmPassword) throw new Error("Mật khẩu không trùng khớp");
             if (password.length < 6) throw new Error("Mật khẩu phải có ít nhất 6 chữ số");
-        },
-        mutationFn: async () => {
+
             return await kyAspDotnet.post("api/auth/register", {
                 json: {
                     email,
