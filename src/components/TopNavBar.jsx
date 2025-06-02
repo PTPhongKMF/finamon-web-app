@@ -1,9 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 import UserAvatar from "./UserAvatar";
 import { useUserStore } from "../zustand/userStore";
+import { useTranslation } from "react-i18next";
+import I18nSelector from "./I18nSelector";
 
 function TopNavBar() {
   const { pathname } = useLocation();
+  const { t } = useTranslation("common");
   const user = useUserStore(state => state.user);
 
   const isAppRoute = pathname.startsWith("/app");
@@ -88,28 +91,28 @@ function TopNavBar() {
               <Link to="/"
                 className={`${pathname === "/" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
               >
-                Giới Thiệu
+                {t("topnavbar.home")}
               </Link>
               <Link to="/pricings"
                 className={`${pathname === "/pricings" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
               >
-                Giá Cả
+                {t("topnavbar.pricing")}
               </Link>
               <Link to="/features"
                 className={`${pathname === "/features" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
               >
-                Tính Năng
+                {t("topnavbar.feature")}
               </Link>
               <Link to="/blogs"
                 className={`${pathname === "/blogs" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
               >
-                Tin Tức
+                {t("topnavbar.new")}
               </Link>
             </nav>
           )}
 
 
-          <div className="flex justify-self-end gap-2">
+          <div className="flex justify-self-end items-center gap-2">
             {user ? (
               <>
                 <UserAvatar />
@@ -129,20 +132,26 @@ function TopNavBar() {
                     </Link>
                   )
                 )}
+
+                <I18nSelector />
               </>
             ) : (
-              <Link to="/login"
-                className="px-4 py-2 mx-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
-              >
-                Đăng kí  / Đăng nhập
-              </Link>
+              <>
+                <Link to="/login"
+                  className="px-4 py-2 mx-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
+                >
+                  Đăng kí  / Đăng nhập
+                </Link>
+
+                <I18nSelector />
+              </>
             )}
           </div>
         </div >
 
       </header >
     );
-  } 
+  }
 }
 
 export default TopNavBar;
