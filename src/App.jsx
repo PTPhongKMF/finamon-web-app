@@ -7,7 +7,6 @@ import Pricing from "./pages/Pricing";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import NotFound from "./pages/NotFound";
-import AuthContextProvider from "./contexts/AuthContextProvider";
 import Logout from "./pages/auth/Logout";
 import AppOverview from "./pages/app/AppOverview";
 import ProtectedRoute from "./components/wrapper/ProtectedRoute";
@@ -20,11 +19,12 @@ import StaffDbBlog from "./pages/dashboard/staff/StaffDbBlog";
 import ScrollToTop from "./components/ScrollToTop";
 import ProfileLayout from "./components/wrapper/ProfileLayout";
 import UserProfile from "./pages/profile/UserProfile";
+import I18nProvider from "./context/I18nProvider";
 
 function App() {
 
   return (
-    <AuthContextProvider>
+    <I18nProvider>
       <ScrollToTop />
       
       <Routes>
@@ -67,7 +67,7 @@ function App() {
         </Route>
       </Routes>
 
-    </AuthContextProvider>
+    </I18nProvider>
   )
 }
 

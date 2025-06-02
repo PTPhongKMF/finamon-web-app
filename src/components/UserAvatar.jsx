@@ -1,4 +1,4 @@
-import { useUserStore } from "../zustand/userStore";
+import { useUserStore } from "../stores/userStore";
 import { Link } from "react-router-dom";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./shadcn/hovercard";
 

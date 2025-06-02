@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { kyAspDotnet } from '../../api/ky';
 import { useMutation } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
-import { useUserStore } from '../../zustand/userStore';
+import { useUserStore } from '../../stores/userStore';
 
 function Login() {
     const setUser = useUserStore(state => state.setUser);

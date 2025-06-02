@@ -1,7 +1,7 @@
 import { ImageUp } from "lucide-react";
 import { Separator } from "../../components/shadcn/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/shadcn/ui/card";
-import { useUserStore } from "../../zustand/userStore";
+import { useUserStore } from "../../stores/userStore";
 
 function UserProfile() {
   const user = useUserStore(state => state.user);

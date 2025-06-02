@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import UserAvatar from "./UserAvatar";
-import { useUserStore } from "../zustand/userStore";
+import { useUserStore } from "../stores/userStore";
 import { useTranslation } from "react-i18next";
 import I18nSelector from "./I18nSelector";
 

@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './shadcn/select';
+import { useShallow } from "zustand/react/shallow";
+import { useLanguageStore } from '../stores/langStore';
 
 export default function I18nSelector() {
-  const { t, i18n } = useTranslation();
-
-  const [lang, setLang] = useState("en");
-
-  useEffect(() => {
-    i18n.changeLanguage(lang)
-  }, [lang])
+  const { t } = useTranslation();
+  const { lang, setLang } = useLanguageStore(useShallow(
+    state => ({
+      lang: state.lang,
+      setLang: state.setLang
+    })
+  ))
 
   return (
     <Select onValueChange={setLang} defaultValue={lang}>

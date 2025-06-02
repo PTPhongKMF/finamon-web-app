@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import LeftSideBar from "../LeftSideBar";
-import { useUserStore } from "../../zustand/userStore";
+import { useUserStore } from "../../stores/userStore";
 
 function ProfileLayout() {
   const user = useUserStore(state => state.user);

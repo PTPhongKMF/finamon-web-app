@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUserStore } from "../../zustand/userStore";
+import { useUserStore } from "../../stores/userStore";
 
 function Logout() {
   const setUser = useUserStore(state => state.setUser);
