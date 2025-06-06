@@ -1,0 +1,17 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+
+  "404": {
+    "404message": "Ôi trời! Không tìm thấy trang này.",
+    "goback": "Về Trang Chủ"
+  },
+  "common": {
+    "topnavbar": {
+      "home": "Trang Chủ",
+      "feature": "Tính Năng",
+      "pricing": "Giá Cả",
+      "blog": "Tin Tức",
+      "select": "Chọn"
+    }
+  }
+}

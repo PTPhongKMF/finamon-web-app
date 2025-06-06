@@ -1,21 +1,13 @@
-import { useTranslation } from 'react-i18next'
+import { m } from '../i18n/paraglide/messages';
+import { getLocale, setLocale } from '../i18n/paraglide/runtime';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './shadcn/select';
-import { useShallow } from "zustand/react/shallow";
-import { useLanguageStore } from '../stores/langStore';
 
 export default function I18nSelector() {
-  const { t } = useTranslation();
-  const { lang, setLang } = useLanguageStore(useShallow(
-    state => ({
-      lang: state.lang,
-      setLang: state.setLang
-    })
-  ))
 
   return (
-    <Select onValueChange={setLang} defaultValue={lang}>
+    <Select onValueChange={setLocale} defaultValue={getLocale}>
       <SelectTrigger className="w-fit bg-gray-200">
-        <SelectValue placeholder={t("topnavbar.select")} />
+        <SelectValue placeholder={m['common.topnavbar.select']()} />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="en">

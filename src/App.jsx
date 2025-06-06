@@ -19,12 +19,11 @@ import StaffDbBlog from "./pages/dashboard/staff/StaffDbBlog";
 import ScrollToTop from "./components/ScrollToTop";
 import ProfileLayout from "./components/wrapper/ProfileLayout";
 import UserProfile from "./pages/profile/UserProfile";
-import I18nProvider from "./context/I18nProvider";
 
 function App() {
 
   return (
-    <I18nProvider>
+    <>
       <ScrollToTop />
       
       <Routes>
@@ -67,7 +66,7 @@ function App() {
         </Route>
       </Routes>
 
-    </I18nProvider>
+    </>
   )
 }
 

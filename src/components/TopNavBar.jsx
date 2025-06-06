@@ -1,12 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import UserAvatar from "./UserAvatar";
 import { useUserStore } from "../stores/userStore";
-import { useTranslation } from "react-i18next";
 import I18nSelector from "./I18nSelector";
+import { m } from "../i18n/paraglide/messages";
 
 function TopNavBar() {
   const { pathname } = useLocation();
-  const { t } = useTranslation("common");
   const user = useUserStore(state => state.user);
 
   const isAppRoute = pathname.startsWith("/app");
@@ -91,22 +90,22 @@ function TopNavBar() {
               <Link to="/"
                 className={`${pathname === "/" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
               >
-                {t("topnavbar.home")}
+                {m["common.topnavbar.home"]()}
               </Link>
               <Link to="/pricings"
                 className={`${pathname === "/pricings" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
               >
-                {t("topnavbar.pricing")}
+                {m["common.topnavbar.pricing"]()}
               </Link>
               <Link to="/features"
                 className={`${pathname === "/features" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
               >
-                {t("topnavbar.feature")}
+                {m["common.topnavbar.feature"]()}
               </Link>
               <Link to="/blogs"
                 className={`${pathname === "/blogs" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
               >
-                {t("topnavbar.new")}
+                {m["common.topnavbar.blog"]()}
               </Link>
             </nav>
           )}

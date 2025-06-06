@@ -1,0 +1,17 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+
+  "404": {
+    "404message": "Oops! Can't find this page.",
+    "goback": "Back to Homepage"
+  },
+  "common": {
+    "topnavbar": {
+      "home": "Home",
+      "feature": "Feature",
+      "pricing": "Pricing",
+      "blog": "News",
+      "select": "Select"
+    }
+  }
+}
