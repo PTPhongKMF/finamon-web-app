@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import SiteLayout from "./components/wrapper/SiteLayout";
-import Blog from "./pages/Blog";
+import Blog from "./pages/blog/Blog";
 import Feature from "./pages/Feature";
 import Pricing from "./pages/Pricing";
 import Login from "./pages/auth/Login";
@@ -21,11 +21,10 @@ import ProfileLayout from "./components/wrapper/ProfileLayout";
 import UserProfile from "./pages/profile/UserProfile";
 
 function App() {
-
   return (
     <>
       <ScrollToTop />
-      
+
       <Routes>
         <Route element={<SiteLayout />}>
           <Route index element={<Home />} />
@@ -38,19 +37,23 @@ function App() {
           <Route path="/verify-account" element={<VerifyAccount />} />
           <Route path="/logout" element={<Logout />} />
 
-          <Route element={<ProtectedRoute allowedRoles={["Customer", "Staff", "Admin"]} />}>
-            <Route path="/profile" element={<ProfileLayout/>}>
+          <Route
+            element={
+              <ProtectedRoute allowedRoles={["Customer", "Staff", "Admin"]} />
+            }
+          >
+            <Route path="/profile" element={<ProfileLayout />}>
               <Route index element={<UserProfile />} />
             </Route>
 
-            <Route path="/app" element={<AppLayout/>}>
+            <Route path="/app" element={<AppLayout />}>
               <Route index element={<AppOverview />} />
               <Route path="t" element={<Component />} />
             </Route>
           </Route>
 
           <Route element={<ProtectedRoute allowedRoles={["Staff", "Admin"]} />}>
-            <Route path="/dashboard/staff" element={<DashboardLayout/>}>
+            <Route path="/dashboard/staff" element={<DashboardLayout />}>
               <Route index element={<StaffDbOverview />} />
               <Route path="blogs" element={<StaffDbBlog />} />
             </Route>
@@ -65,9 +68,8 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-
     </>
-  )
+  );
 }
 
 export default App;
