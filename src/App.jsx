@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import SiteLayout from "./components/wrapper/SiteLayout";
-import Blog from "./pages/Blog";
+import Blog from "./pages/blog/Blog";
 import Feature from "./pages/Feature";
 import Pricing from "./pages/Pricing";
 import Login from "./pages/auth/Login";
@@ -24,11 +24,10 @@ import Test from "./pages/Test";
 import AppBudget from "./pages/app/AppBudget";
 
 function App() {
-
   return (
     <>
       <ScrollToTop />
-      
+
       <Routes>
         <Route element={<SiteLayout />}>
           <Route index element={<Home />} />
@@ -41,12 +40,16 @@ function App() {
           <Route path="/verify-account" element={<VerifyAccount />} />
           <Route path="/logout" element={<Logout />} />
 
-          <Route element={<ProtectedRoute allowedRoles={["Customer", "Staff", "Admin"]} />}>
-            <Route path="/profile" element={<ProfileLayout/>}>
+          <Route
+            element={
+              <ProtectedRoute allowedRoles={["Customer", "Staff", "Admin"]} />
+            }
+          >
+            <Route path="/profile" element={<ProfileLayout />}>
               <Route index element={<UserProfile />} />
             </Route>
 
-            <Route path="/app" element={<AppLayout/>}>
+            <Route path="/app" element={<AppLayout />}>
               <Route index element={<AppOverview />} />
               <Route path="journal" element={<AppJournal />} />
               <Route path="budget" element={<AppBudget />} />
@@ -55,7 +58,7 @@ function App() {
           </Route>
 
           <Route element={<ProtectedRoute allowedRoles={["Staff", "Admin"]} />}>
-            <Route path="/dashboard/staff" element={<DashboardLayout/>}>
+            <Route path="/dashboard/staff" element={<DashboardLayout />}>
               <Route index element={<StaffDbOverview />} />
               <Route path="blogs" element={<StaffDbBlog />} />
             </Route>
@@ -72,9 +75,8 @@ function App() {
           <Route path="/t" element={<Test />} />
         </Route>
       </Routes>
-
     </>
-  )
+  );
 }
 
 export default App;
