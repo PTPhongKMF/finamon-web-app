@@ -11,7 +11,27 @@
       "feature": "Feature",
       "pricing": "Pricing",
       "blog": "News",
-      "select": "Select"
+      "select": "Select",
+      "login/register": "Register / Login",
+      "expenseBook": "Expense Book",
+      "toExpenseManagement": "To expense book",
+      "account": "Account",
+      "logout": "Logout"
+    },
+    "error": "Error",
+    "success": "Success",
+    "uploadImg": "Upload Image"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "repeatPassword": "Repeat Password"
+  },
+  "profile": {
+    "personalInfo": "Personal Information",
+    "security": "Security",
+    "alert": {
+      "imgOverSizeLimit": "Image size exceeds 2MB limit"
     }
   }
 }

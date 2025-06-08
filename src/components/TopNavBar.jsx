@@ -116,22 +116,6 @@ function TopNavBar() {
               <>
                 <UserAvatar />
 
-                {!isDashboardRoute && (
-                  isAppRoute ? (
-                    <Link to="/"
-                      className="px-4 py-2 mx-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
-                    >
-                      Thoát sổ quản lí
-                    </Link>
-                  ) : (
-                    <Link to="/app"
-                      className="px-4 py-2 mx-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
-                    >
-                      Đến sổ quản lí
-                    </Link>
-                  )
-                )}
-
                 <I18nSelector />
               </>
             ) : (
@@ -139,7 +123,7 @@ function TopNavBar() {
                 <Link to="/login"
                   className="px-4 py-2 mx-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition duration-200 inline-block"
                 >
-                  Đăng kí  / Đăng nhập
+                  {m["common.topnavbar.login/register"]()}
                 </Link>
 
                 <I18nSelector />

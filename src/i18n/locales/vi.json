@@ -11,7 +11,27 @@
       "feature": "Tính Năng",
       "pricing": "Giá Cả",
       "blog": "Tin Tức",
-      "select": "Chọn"
+      "select": "Chọn",
+      "login/register": "Đăng kí / Đăng nhập",
+      "expenseBook": "Sổ chi tiêu",
+      "toExpenseManagement": "Đến sổ chi tiêu",
+      "account": "Tài Khoản",
+      "logout": "Đăng Xuất"
+    },
+    "error": "Lỗi",
+    "success": "Thành Công",
+    "uploadImg": "Tải ảnh lên"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Mật Khẩu",
+    "repeatPassword": "Nhập lại Mật Khẩu"
+  },
+  "profile": {
+    "personalInfo": "Thông tin cá nhân",
+    "security": "Bảo mật",
+    "alert": {
+      "imgOverSizeLimit": "Dung lượng ảnh vượt 2MB"
     }
   }
 }

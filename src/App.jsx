@@ -17,8 +17,11 @@ import DashboardLayout from "./components/wrapper/DashboardLayout";
 import StaffDbOverview from "./pages/dashboard/staff/StaffDbOverview";
 import StaffDbBlog from "./pages/dashboard/staff/StaffDbBlog";
 import ScrollToTop from "./components/ScrollToTop";
-import ProfileLayout from "./components/wrapper/ProfileLayout";
+import ProfileLayout from "./components/profile/ProfileLayout";
 import UserProfile from "./pages/profile/UserProfile";
+import AppJournal from "./pages/app/AppJournal";
+import Test from "./pages/Test";
+import AppBudget from "./pages/app/AppBudget";
 
 function App() {
 
@@ -45,6 +48,8 @@ function App() {
 
             <Route path="/app" element={<AppLayout/>}>
               <Route index element={<AppOverview />} />
+              <Route path="journal" element={<AppJournal />} />
+              <Route path="budget" element={<AppBudget />} />
               <Route path="t" element={<Component />} />
             </Route>
           </Route>
@@ -63,6 +68,8 @@ function App() {
           </Route> */}
 
           <Route path="*" element={<NotFound />} />
+
+          <Route path="/t" element={<Test />} />
         </Route>
       </Routes>
 

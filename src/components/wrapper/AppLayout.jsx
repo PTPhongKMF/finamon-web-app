@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
 import LeftSideBar from "../LeftSideBar";
+import AppHeader from "../app/AppHeader";
 
 function AppLayout() {
    return (
-      <div className="grid grid-cols-[13rem_1fr] p-8 gap-4 bg-linear-to-br from-green-100 to-yellow-100">
+      <div className="grid grid-cols-[13rem_1fr] grid-rows-[auto_1fr] p-2 gap-4 bg-linear-to-br from-green-100 to-yellow-100">
 
          <LeftSideBar />
+
+         <AppHeader />
 
          <Outlet />
 

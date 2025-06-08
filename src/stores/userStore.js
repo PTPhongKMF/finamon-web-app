@@ -7,21 +7,25 @@ export const useUserStore = create((set, get) => ({
     return savedUser ? JSON.parse(savedUser) : null;
   })(),
 
-  setUser: (user) => {
-    set({ user });
+  setUser: (updatedUser) => {
+    const token = Cookies.get("token");
 
-    if (user) {
-      const token = Cookies.get("token");
-      if (token) {
-        localStorage.setItem("user", JSON.stringify(user));
-      } else {
-        get().clearUser();
-      }
+    if (updatedUser && token) {
+      set({
+        user: {
+          ...get().user, ...updatedUser
+        }
+      })
+
+      localStorage.setItem("user", JSON.stringify(get().user));
+    } else {
+      set({ user: updatedUser })
+      get().clearUser();
     }
   },
 
   clearUser: () => {
-    set({ user: null }); 
+    set({ user: null });
     localStorage.removeItem('user');
     Cookies.remove('token');
   }

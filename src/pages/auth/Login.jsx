@@ -22,9 +22,9 @@ function Login() {
             }).json();
         },
         onSuccess: (data) => {
-            if (data.isBanned) throw new Error("Bạn đã bị cấm, liên hệ hỗ trợ nếu bạn nghĩ đây là sai lầm");
-
             console.log(data);
+
+            if (data.isBanned) throw new Error("Bạn đã bị cấm, liên hệ hỗ trợ nếu bạn nghĩ đây là sai lầm");
 
             if (data.requiresVerification) {
                 navigate("/verify-account", { state: { email: email } });
@@ -32,11 +32,12 @@ function Login() {
             }
 
             Cookies.set("token", data.data.token);
-            const userRoles = data?.data?.user?.userRoles?.map(role => role.roleName) ?? [];
+            const userRoles = data?.data?.user?.userRoles?.map(role => role.roleName) || [];
             setUser({
-                name: data?.data?.user?.userName ?? data?.data?.user?.email.split("@")[0],
+                id: data?.data?.user?.id,
+                name: data?.data?.user?.userName || data?.data?.user?.email.split("@")[0],
                 roles: userRoles,
-                image: data?.data?.user?.image ?? "https://st4.depositphotos.com/11634452/21365/v/450/depositphotos_213659488-stock-illustration-picture-profile-icon-human-people.jpg",
+                image: data?.data?.user?.image || "https://st4.depositphotos.com/11634452/21365/v/450/depositphotos_213659488-stock-illustration-picture-profile-icon-human-people.jpg",
             });
 
             if (userRoles.some(role => role === "Staff")) {
