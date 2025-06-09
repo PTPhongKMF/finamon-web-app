@@ -1,6 +1,9 @@
 import { flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../shadcn/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../shadcn/table";
 import { format } from "@formkit/tempo";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../../shadcn/dropdown-menu";
+import { MoreHorizontal } from "lucide-react";
+import { m } from "../../../i18n/paraglide/messages";
 
 const columns = [
   {
@@ -32,6 +35,33 @@ const columns = [
     accessorKey: "updatedAt",
     header: () => <div className="text-right">Updated</div>,
     cell: ({ row }) => <div className="text-right">{format(row.getValue("updatedAt"), "DD/MM/YYYY, HH:mm:ss")}</div>,
+  },
+  {
+    id: "actions",
+    cell: ({ row }) => {
+      const rowData = row.original
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="h-8 w-8 p-0 flex justify-center items-center">
+              <MoreHorizontal className="size-6 text-blue-500" />
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="min-w-20">
+            <DropdownMenuItem
+              onClick={() => navigator.clipboard.writeText(rowData.id)}
+            >
+              {m["common.edit"]()}
+            </DropdownMenuItem>
+            <DropdownMenuItem className="text-red-500"
+            >
+              {m["common.delete"]()}
+              </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )
+    }
   }
 ];
 
@@ -44,6 +74,7 @@ export default function JournalTable({ data }) {
   })
 
   return (
+    
     <div className="rounded-md border">
       <Table>
         <TableHeader>
@@ -55,9 +86,9 @@ export default function JournalTable({ data }) {
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                   </TableHead>
                 )
               })}

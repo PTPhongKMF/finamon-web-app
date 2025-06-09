@@ -1,6 +1,5 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-
   "404": {
     "404message": "Ôi trời! Không tìm thấy trang này.",
     "goback": "Về Trang Chủ"
@@ -20,7 +19,13 @@
     },
     "error": "Lỗi",
     "success": "Thành Công",
-    "uploadImg": "Tải ảnh lên"
+    "uploadImg": "Tải ảnh lên",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "name": "Tên",
+    "amount": "Số tiền",
+    "note": "Ghi chú",
+    "enterNoteHere": "Nhập ghi chú ở đây..."
   },
   "auth": {
     "email": "Email",
@@ -33,5 +38,12 @@
     "alert": {
       "imgOverSizeLimit": "Dung lượng ảnh vượt 2MB"
     }
+  },
+  "app": {
+    "overview": "Tổng Quan",
+    "expenses": "Chi Tiêu",
+    "budgetLimit": "Giới hạn ngân sách",
+    "addExpense": "Thêm chi tiêu",
+    "addCategory": "Thêm danh mục"
   }
 }

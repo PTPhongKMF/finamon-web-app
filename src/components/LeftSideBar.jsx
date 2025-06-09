@@ -13,19 +13,21 @@ function LeftSideBar() {
           className={clsx("flex gap-2 rounded-r-md transition-all",
             pathname.endsWith("app") ? "border-blue-600 bg-white py-1 px-2 border-l-4 font-semibold" : "border-transparent")}>
           <HandCoins />
-          Tổng Quan
+          {m["app.overview"]()}
         </Link>
         <Link to="/app/journal"
           className={clsx("flex gap-2 rounded-r-md transition-all",
             pathname.endsWith("journal") ? "border-blue-600 bg-white py-1 px-2 border-l-4 font-semibold" : "border-transparent")}>
           <NotebookText />
-          Ghi Chép
+          {m["app.expenses"]()}
         </Link>
         <Link to="/app/budget"
           className={clsx("flex gap-2 rounded-r-md transition-all",
             pathname.endsWith("budget") ? "border-blue-600 bg-white py-1 px-2 border-l-4 font-semibold" : "border-transparent")}>
           <ShieldAlert />
-          Ghi Chép
+          <span className="text-ellipsis overflow-hidden whitespace-nowrap">
+            {m["app.budgetLimit"]()}
+          </span>
         </Link>
         <Link>Tổng Quan 4</Link>
       </nav>
@@ -52,14 +54,14 @@ function LeftSideBar() {
         <Link
           to={"/profile"}
           className={`flex gap-2 items-center rounded-r-md py-1 px-2 border-l-4 ${pathname === "/profile" ? "border-blue-600 bg-gray-100" : "border-transparent"}`}>
-          <Info className="size-4"/>
+          <Info className="size-4" />
           {m["profile.personalInfo"]()}
         </Link>
 
         <Link
           to={"/"}
           className={`flex gap-2 items-center rounded-r-md py-1 px-2 border-l-4 ${pathname === "/profile/password" ? "border-blue-600 bg-gray-100" : "border-transparent"}`}>
-          <DoorClosedLocked className="size-4"/>
+          <DoorClosedLocked className="size-4" />
           {m["profile.security"]()}
         </Link>
       </nav>

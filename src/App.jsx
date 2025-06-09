@@ -10,7 +10,6 @@ import NotFound from "./pages/NotFound";
 import Logout from "./pages/auth/Logout";
 import AppOverview from "./pages/app/AppOverview";
 import ProtectedRoute from "./components/wrapper/ProtectedRoute";
-import AppLayout from "./components/wrapper/AppLayout";
 import { Component } from "./pages/app/testOverview";
 import VerifyAccount from "./pages/auth/VerifyAccount";
 import DashboardLayout from "./components/wrapper/DashboardLayout";
@@ -22,6 +21,8 @@ import UserProfile from "./pages/profile/UserProfile";
 import AppJournal from "./pages/app/AppJournal";
 import Test from "./pages/Test";
 import AppBudget from "./pages/app/AppBudget";
+import AppLayout from "./components/app/AppLayout";
+import FloatScrollToTop from "./components/FloatScrollToTop";
 
 function App() {
   return (
@@ -75,6 +76,8 @@ function App() {
           <Route path="/t" element={<Test />} />
         </Route>
       </Routes>
+
+      <FloatScrollToTop />
     </>
   );
 }

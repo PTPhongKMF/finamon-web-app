@@ -20,7 +20,13 @@
     },
     "error": "Error",
     "success": "Success",
-    "uploadImg": "Upload Image"
+    "uploadImg": "Upload Image",
+    "edit": "Update",
+    "delete": "Delete",
+    "name": "Name",
+    "amount": "Amount",
+    "note": "Note",
+    "enterNoteHere": "Enter note here..."
   },
   "auth": {
     "email": "Email",
@@ -33,5 +39,12 @@
     "alert": {
       "imgOverSizeLimit": "Image size exceeds 2MB limit"
     }
+  },
+  "app": {
+    "overview": "Overview",
+    "expenses": "Expenses",
+    "budgetLimit": "Budget Limit",
+    "addExpense": "Add Expense",
+    "addCategory": "Add Category"
   }
 }

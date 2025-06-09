@@ -1,17 +1,33 @@
 import React from 'react'
 import { Card } from '../../components/shadcn/ui/card'
-import JournalTable from '../../components/app/JournalTable'
+import JournalTable from '../../components/app/journal/JournalTable'
 import { expenseList } from './testExpenseList'
+import AddExpense from '../../components/app/journal/AddExpense'
+import AddCategory from '../../components/app/journal/AddCategory'
 
 export default function AppJournal() {
   return (
-    <article className="w-full grid auto-rows-auto gap-2 animate-in fade-in">
+    <article className="w-full grid grid-cols-[auto_auto] gap-2 animate-in fade-in">
 
-      <Card className="p-4 bg-neutral-50 border-t-8 border-x-2 border-yellow-400">
-        
+      <section className="grid grid-rows-[auto_1fr] gap-2">
+        <Card className="bg-neutral-50 border-t-8 border-x-2 border-yellow-400">
+          <AddExpense />
+        </Card>
 
-        <JournalTable data={expenseList}/>
-      </Card>
+        <Card className="p-4 bg-neutral-50 border-t-8 border-x-2 border-yellow-400">
+          <JournalTable data={expenseList} />
+        </Card>
+      </section>
+
+      <section className="grid grid-rows-[auto_1fr] gap-2">
+        <Card className="bg-neutral-50 border-t-8 border-x-2 border-green-400">
+          <AddCategory />
+        </Card>
+
+        <Card className="p-4 bg-neutral-50 border-t-8 border-x-2 border-green-400">
+          hiiiiiiiiii
+        </Card>
+      </section>
 
     </article>
   )

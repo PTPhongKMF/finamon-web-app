@@ -1,13 +1,27 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/shadcn/ui/card";
+import { Card } from "../../components/shadcn/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/shadcn/select";
-import { HandCoins } from "lucide-react";
+import { HandCoins, NotebookText } from "lucide-react";
+import { useLocation } from "react-router-dom";
+import { m } from "../../i18n/paraglide/messages";
 
 export default function AppHeader() {
+  const { pathname } = useLocation();
+
+
   return (
     <section className="col-2 ">
       <Card className="bg-linear-to-b from-green-400 to-green-600 grid grid-cols-3 items-center text-2xl font-bold text-gray-100 p-2 gap-20">
-        <HandCoins className="size-12" />
-        <p>Tổng Quan Chi Tiêu</p>
+
+        {pathname === "/app" && (<>
+          <HandCoins className="size-12" />
+          <p>{m["app.overview"]()}</p>
+        </>)}
+        {pathname === "/app/journal" && (<>
+          <NotebookText className="size-12" />
+          <p>{m["app.expenses"]()}</p>
+        </>)}
+
+
         <Select defaultValue="4-2025">
           <SelectTrigger className="max-w-[20rem] min-h-8 text-3xl font-bold border-amber-400 border-3">
             <SelectValue placeholder="Select" />
