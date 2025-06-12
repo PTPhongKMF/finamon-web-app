@@ -1,8 +1,11 @@
 import ky from 'ky';
 import Cookies from 'js-cookie';
 
+const kyAspDotnet_LOCAL = "http://localhost:5296/";
+const kyAspDotnet_WEB = "https://finamon.runasp.net/";
+
 export const kyAspDotnet = ky.extend({
-  prefixUrl: "http://finamon.runasp.net/", 
+  prefixUrl: kyAspDotnet_LOCAL, 
   hooks: {
     beforeRequest: [
       request => {
