@@ -25,6 +25,7 @@
     "ky": "^1.8.1",
     "lucide-react": "^0.511.0",
     "react": "^19.1.0",
+    "react-country-region-selector": "^4.0.2",
     "react-dom": "^19.1.0",
     "react-is": "^19.1.0",
     "react-router-dom": "^7.6.0",

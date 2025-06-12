@@ -13,7 +13,7 @@ function ProfileLayout() {
       <section className="grid grid-cols-2">
         <div className="flex gap-4 items-center">
           <img src={user.image} alt="User Avatar" className="size-16 rounded-full object-cover border-2 border-gray-200 mx-4" />
-          <p className="font-bold text-4xl">{user.name}</p>
+          <p className="font-bold text-4xl">{user.name || user.email.split("@")[0]}</p>
         </div>
 
         <Link to="/app"

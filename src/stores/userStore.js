@@ -3,6 +3,8 @@ import Cookies from "js-cookie";
 
 export const useUserStore = create((set, get) => ({
   user: (() => {
+    if (!Cookies.get("token")) return null;
+
     const savedUser = localStorage.getItem('user');
     return savedUser ? JSON.parse(savedUser) : null;
   })(),

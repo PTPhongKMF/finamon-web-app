@@ -7,7 +7,7 @@ import AddCategory from '../../components/app/journal/AddCategory'
 
 export default function AppJournal() {
   return (
-    <article className="w-full grid grid-cols-[auto_auto] gap-2 animate-in fade-in">
+    <article className="w-full grid grid-cols-[4fr_1fr] gap-2 animate-in fade-in">
 
       <section className="grid grid-rows-[auto_1fr] gap-2">
         <Card className="bg-neutral-50 border-t-8 border-x-2 border-yellow-400">

@@ -6,6 +6,7 @@ import { m } from "../../i18n/paraglide/messages";
 import { useMutation } from "@tanstack/react-query";
 import { kyAspDotnet } from "../../api/ky";
 import { buildFormData } from "../../utils/api";
+import PersonalInfo from "../../components/profile/PersonalInfo";
 
 function UserProfile() {
   const user = useUserStore(state => state.user);
@@ -38,9 +39,7 @@ function UserProfile() {
         </CardHeader>
         <div className="mx-4"><Separator /></div>
         <CardContent className="grid grid-cols-2 pt-4">
-          <section>
-            sdsdsdsdsd
-          </section>
+          <PersonalInfo/>
 
           <section className="flex flex-col gap-4 items-center">
             <img src={user.image} alt="User Avatar" className="size-50 rounded-full object-cover border-2 border-gray-200 mx-4" />

@@ -25,7 +25,14 @@
     "name": "Tên",
     "amount": "Số tiền",
     "note": "Ghi chú",
-    "enterNoteHere": "Nhập ghi chú ở đây..."
+    "enterNoteHere": "Nhập ghi chú ở đây...",
+    "color": "Màu sắc",
+    "phone": "Số điện thoại",
+    "country": "Đất nước",
+    "empty": "Trống",
+    "confirm": "Xác nhận",
+    "cancel": "Hủy bỏ",
+    "fillAllFieldText": "Vui lòng điền đầy đủ thông tin vào các ô trống"
   },
   "auth": {
     "email": "Email",
@@ -44,6 +51,7 @@
     "expenses": "Chi Tiêu",
     "budgetLimit": "Giới hạn ngân sách",
     "addExpense": "Thêm chi tiêu",
-    "addCategory": "Thêm danh mục"
+    "addCategory": "Thêm danh mục",
+    "toExpenseDetails": "Đến chi tiết ghi chép"
   }
 }

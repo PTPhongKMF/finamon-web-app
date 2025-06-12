@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { kyAspDotnet } from '../../api/ky';
-import { useMutation } from '@tanstack/react-query';
-import Cookies from 'js-cookie';
-import { useUserStore } from '../../stores/userStore';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { kyAspDotnet } from "../../api/ky";
+import { useMutation } from "@tanstack/react-query";
+import Cookies from "js-cookie";
+import { useUserStore } from "../../stores/userStore";
 
 function Login() {
     const setUser = useUserStore(state => state.setUser);
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const doLogin = useMutation({
         mutationFn: async () => {
@@ -31,11 +31,14 @@ function Login() {
                 return;
             }
 
-            Cookies.set("token", data.data.token);
+            Cookies.set("token", data.data.token, { expires: 2 });
             const userRoles = data?.data?.user?.userRoles?.map(role => role.roleName) || [];
             setUser({
                 id: data?.data?.user?.id,
-                name: data?.data?.user?.userName || data?.data?.user?.email.split("@")[0],
+                email: data?.data?.user?.email,
+                name: data?.data?.user?.userName || "",
+                phone: data?.data?.user?.phone || "",
+                country: data?.data?.user?.country || "",
                 roles: userRoles,
                 image: data?.data?.user?.image || "https://st4.depositphotos.com/11634452/21365/v/450/depositphotos_213659488-stock-illustration-picture-profile-icon-human-people.jpg",
             });
