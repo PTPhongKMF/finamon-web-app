@@ -5,7 +5,7 @@ const kyAspDotnet_LOCAL = "http://localhost:5296/";
 const kyAspDotnet_WEB = "https://finamon.runasp.net/";
 
 export const kyAspDotnet = ky.extend({
-  prefixUrl: kyAspDotnet_LOCAL, 
+  prefixUrl: kyAspDotnet_WEB, 
   hooks: {
     beforeRequest: [
       request => {
