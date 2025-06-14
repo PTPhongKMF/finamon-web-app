@@ -1,5 +1,4 @@
-import DatePicker from "react-datepicker";
-import { DayPicker } from "react-day-picker";
+
 
 export default function Test() {
   return (
@@ -7,9 +6,7 @@ export default function Test() {
 
       <input type="month" />
 
-      <DayPicker
-        mode="single"
-      />
+     
 
     </div>
   )
