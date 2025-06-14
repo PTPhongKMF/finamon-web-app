@@ -6,7 +6,6 @@ import { m } from "../../i18n/paraglide/messages";
 import { useAppDateStore } from "../../stores/appJournalStore";
 import { useShallow } from "zustand/react/shallow";
 
-import "react-datepicker/dist/react-datepicker.css";
 import { Popover, PopoverContent, PopoverTrigger } from "../shadcn/popover";
 import { format } from "@formkit/tempo";
 import MonthYearPicker from "./MonthYearPicker";
