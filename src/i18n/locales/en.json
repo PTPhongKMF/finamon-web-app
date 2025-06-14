@@ -33,7 +33,8 @@
     "empty": "Empty",
     "confirm": "Confirm",
     "cancel": "Cancel",
-    "fillAllFieldText": "Please fill in all required fields"
+    "fillAllFieldText": "Please fill in all required fields",
+    "today": "Today"
   },
   "auth": {
     "email": "Email",
@@ -53,6 +54,7 @@
     "budgetLimit": "Budget Limit",
     "addExpense": "Add Expense",
     "addCategory": "Add Category",
-    "toExpenseDetails": "To expense details"
+    "toExpenseDetails": "To expense details",
+    "selectYear": "Select Year"
   }
 }

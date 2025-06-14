@@ -55,7 +55,7 @@ function TopNavBar() {
     )
   } else {
     return (
-      <header className={`w-full bg-white shadow px-6 py-2 sticky top-0 z-50 border-b-4 border-yellow-400`}>
+      <header className={"w-full bg-white shadow px-6 py-2 sticky top-0 z-50 border-b-4 border-yellow-400"}>
 
         <div
           className={`z-[-1] absolute inset-0 bg-cover bg-[url('/images/navbar_bg.jpg')] transition-opacity duration-700 ease-in-out ${isAppRoute ? "opacity-100" : "opacity-0"
@@ -67,19 +67,10 @@ function TopNavBar() {
         />
 
         <div className="grid grid-cols-3 items-center">
-          <div className="justify-self-start">
-            <h1 className="text-4xl font-bold text-amber-400 hover:text-yellow-500 ml-20 flex items-center gap-2">
-              {isAppRoute ? (
-                <>
-                  <img src="/logo/finamon.svg" alt="Finamon Logo" width="45" height="45" />
-                  Sổ Chi Tiêu
-                </>
-              ) : (
-                <>
-                  <img src="/logo/finamon.svg" alt="Finamon Logo" width="45" height="45" />
-                  <Link to="/">Finamon</Link>
-                </>
-              )}
+          <div className="justify-self-center pe-30">
+            <h1 className="text-4xl font-bold text-amber-400 hover:text-yellow-500 flex items-center gap-2">
+              <img src="/logo/finamon.svg" alt="Finamon Logo" width="45" height="45" />
+              <Link to="/">Finamon</Link>
             </h1>
           </div>
 

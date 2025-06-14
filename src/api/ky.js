@@ -1,18 +1,18 @@
-import ky from 'ky';
-import Cookies from 'js-cookie';
+import ky from "ky";
+import Cookies from "js-cookie";
 
-const kyAspDotnet_LOCAL = "http://localhost:5296/";
-const kyAspDotnet_WEB = "https://finamon.runasp.net/";
+const KyAspDotnet_LOCAL = "http://localhost:5296/";
+const KyAspDotnet_WEB = "https://finamon.runasp.net/";
 
 export const kyAspDotnet = ky.extend({
-  prefixUrl: kyAspDotnet_WEB, 
+  prefixUrl: KyAspDotnet_WEB, 
   hooks: {
     beforeRequest: [
       request => {
         const token = Cookies.get("token");
         
         if (token) {
-          request.headers.set('Authorization', `Bearer ${token}`);
+          request.headers.set("Authorization", `Bearer ${token}`);
         }
       }
     ]
@@ -27,7 +27,7 @@ export const kyDjango = ky.extend({
         const token = Cookies.get("token");
         
         if (token) {
-          request.headers.set('Authorization', `Bearer ${token}`);
+          request.headers.set("Authorization", `Bearer ${token}`);
         }
       }
     ]

@@ -1,6 +1,17 @@
 import Cookies from "js-cookie";
 import { create } from "zustand";
 
+export const useAppDateStore = create((set) => ({
+  selectedMonthYear: (() => {
+    const storedMMYYYY = localStorage.getItem("selectedMonthYear");
+    return storedMMYYYY ? new Date(storedMMYYYY) : new Date()
+  })(),
+  setSelectedMonthYear: (date) => {
+    localStorage.setItem("selectedMonthYear", date.toISOString())
+    set({ selectedMonthYear: date })
+  }
+}))
+
 export const useAppJournalStore = create((set) => ({
   accordionState: (() => {
     return Cookies.get("accState")

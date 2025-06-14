@@ -1,11 +1,15 @@
-import React from 'react'
+import DatePicker from "react-datepicker";
+import { DayPicker } from "react-day-picker";
 
 export default function Test() {
   return (
-    <div className="grid grid-cols-2 grid-rows-[auto_1fr]">
-      <div className="bg-red-400 w-full h-full col-start-2 row-span-full">1</div>
-      <div className="bg-green-400 w-full h-full">2</div>
-      <div className="bg-blue-400 w-full h-full">3</div>
+    <div className="p-10 flex flex-col gap-30 w-full h-full items-center justify-end">
+
+      <input type="month" />
+
+      <DayPicker
+        mode="single"
+      />
 
     </div>
   )

@@ -4,6 +4,8 @@ import { format } from "@formkit/tempo";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../../shadcn/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import { m } from "../../../i18n/paraglide/messages";
+import { useQuery } from "@tanstack/react-query";
+import { kyAspDotnet } from "../../../api/ky";
 
 const columns = [
   {
@@ -67,6 +69,14 @@ const columns = [
 
 
 export default function JournalTable({ data }) {
+  // const getExpenses = useQuery({
+  //   queryFn: async () => {
+  //     return await kyAspDotnet.get("", {
+        
+  //     })
+  //   }
+  // })
+
   const table = useReactTable({
     data,
     columns,
@@ -74,7 +84,6 @@ export default function JournalTable({ data }) {
   })
 
   return (
-    
     <div className="rounded-md border">
       <Table>
         <TableHeader>

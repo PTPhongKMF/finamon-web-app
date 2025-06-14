@@ -23,8 +23,11 @@ import Test from "./pages/Test";
 import AppBudget from "./pages/app/AppBudget";
 import AppLayout from "./components/app/AppLayout";
 import FloatScrollToTop from "./components/FloatScrollToTop";
+import useUserActivityTracker from "./utils/analytic";
 
 function App() {
+  useUserActivityTracker();
+
   return (
     <>
       <ScrollToTop />

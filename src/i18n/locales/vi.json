@@ -32,7 +32,8 @@
     "empty": "Trống",
     "confirm": "Xác nhận",
     "cancel": "Hủy bỏ",
-    "fillAllFieldText": "Vui lòng điền đầy đủ thông tin vào các ô trống"
+    "fillAllFieldText": "Vui lòng điền đầy đủ thông tin vào các ô trống",
+    "today": "Hôm nay"
   },
   "auth": {
     "email": "Email",
@@ -52,6 +53,7 @@
     "budgetLimit": "Giới hạn ngân sách",
     "addExpense": "Thêm chi tiêu",
     "addCategory": "Thêm danh mục",
-    "toExpenseDetails": "Đến chi tiết ghi chép"
+    "toExpenseDetails": "Đến chi tiết ghi chép",
+    "selectYear": "Chọn năm"
   }
 }
