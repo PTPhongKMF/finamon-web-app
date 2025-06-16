@@ -6,7 +6,7 @@ import { useAppJournalCategoryStore } from "../../../stores/appJournalStore"
 import { useShallow } from "zustand/react/shallow"
 import { Input } from "../../shadcn/input"
 import clsx from "clsx"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import { kyAspDotnet } from "../../../api/ky"
 import { useUserStore } from "../../../stores/userStore"
 
@@ -24,6 +24,10 @@ export default function AddCategory() {
     })
   ))
 
+  const fetchCategories = useQuery({
+    queryKey: ["all_category", user.id]
+  })
+
   const addCategory = useMutation({
     mutationFn: async () => {
       return await kyAspDotnet.post("api/category", {
@@ -39,6 +43,8 @@ export default function AddCategory() {
       setAddForm({});
       setTimeout(() => {
         setIsExiting(true);
+        fetchCategories.refetch();
+
         setTimeout(() => {
           setShowSuccess(false);
           setIsExiting(false);
@@ -90,8 +96,8 @@ export default function AddCategory() {
                 </div>
               </section>
 
-              <button onClick={addCategory.mutate} 
-              disabled={addCategory.isPending || !addForm.name || !addForm.color}
+              <button onClick={addCategory.mutate}
+                disabled={addCategory.isPending || !addForm.name || !addForm.color}
                 className={clsx("w-50 h-10 rounded-md p-1 mt-6 mb-4 flex items-center justify-center justify-self-end disabled:cursor-not-allowed disabled:bg-gray-300",
                   (addForm.name && addForm.color && !addCategory.isPending) && "bg-gradient-to-r from-green-400 to-emerald-600 cursor-pointer hover:brightness-90"
                 )}>
