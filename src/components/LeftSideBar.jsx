@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { DoorClosedLocked, HandCoins, Info, NotebookText, ShieldAlert } from "lucide-react";
+import { BanknoteArrowUp, DoorClosedLocked, HandCoins, Info, NotebookText, ShieldAlert } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { m } from "../i18n/paraglide/messages";
 
@@ -29,7 +29,6 @@ function LeftSideBar() {
             {m["app.budgetLimit"]()}
           </span>
         </Link>
-        <Link>Tổng Quan 4</Link>
       </nav>
     );
   } else if (pathname.startsWith("/dashboard/staff")) {
@@ -52,17 +51,24 @@ function LeftSideBar() {
     return (
       <nav className="w-full rounded-md flex flex-col gap-1 px-2 py-4 bg-neutral-50">
         <Link
-          to={"/profile"}
+          to="/profile"
           className={`flex gap-2 items-center rounded-r-md py-1 px-2 border-l-4 ${pathname === "/profile" ? "border-blue-600 bg-gray-100" : "border-transparent"}`}>
           <Info className="size-4" />
           {m["profile.personalInfo"]()}
         </Link>
 
         <Link
-          to={"/"}
-          className={`flex gap-2 items-center rounded-r-md py-1 px-2 border-l-4 ${pathname === "/profile/password" ? "border-blue-600 bg-gray-100" : "border-transparent"}`}>
+          to="/profile/security"
+          className={`flex gap-2 items-center rounded-r-md py-1 px-2 border-l-4 ${pathname === "/profile/security" ? "border-blue-600 bg-gray-100" : "border-transparent"}`}>
           <DoorClosedLocked className="size-4" />
           {m["profile.security"]()}
+        </Link>
+
+        <Link
+          to="/profile/subscription"
+          className={`flex gap-2 items-center rounded-r-md py-1 px-2 border-l-4 ${pathname === "/profile/subscription" ? "border-blue-600 bg-gray-100" : "border-transparent"}`}>
+          <BanknoteArrowUp className="size-4" />
+          {m["profile.subscription"]()}
         </Link>
       </nav>
     )

@@ -7,7 +7,7 @@ function SiteLayout() {
     <>
       <TopNavBar />
 
-      <main className="min-h-170">
+      <main className="h-full">
         <Outlet />
       </main>
 

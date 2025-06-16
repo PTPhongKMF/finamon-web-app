@@ -24,6 +24,8 @@ import AppBudget from "./pages/app/AppBudget";
 import AppLayout from "./components/app/AppLayout";
 import FloatScrollToTop from "./components/FloatScrollToTop";
 import useUserActivityTracker from "./utils/analytic";
+import UserSubscription from "./pages/profile/UserSubscription";
+import UserSecurity from "./pages/profile/UserSecurity";
 
 function App() {
   useUserActivityTracker();
@@ -51,6 +53,8 @@ function App() {
           >
             <Route path="/profile" element={<ProfileLayout />}>
               <Route index element={<UserProfile />} />
+              <Route path="security" element={<UserSecurity />} />
+              <Route path="subscription" element={<UserSubscription />} />
             </Route>
 
             <Route path="/app" element={<AppLayout />}>

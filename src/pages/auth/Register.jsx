@@ -1,19 +1,20 @@
-import { useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
-import { kyAspDotnet } from '../../api/ky';
-import { Link, useNavigate } from 'react-router-dom';
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
+import { kyAspDotnet } from "../../api/ky";
+import { Link, useNavigate } from "react-router-dom";
+import { m } from "../../i18n/paraglide/messages";
 
 function Register() {
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     const doRegister = useMutation({
         mutationFn: async () => {
-            if (password !== confirmPassword) throw new Error("Mật khẩu không trùng khớp");
-            if (password.length < 6) throw new Error("Mật khẩu phải có ít nhất 6 chữ số");
+            if (password.length < 6) throw new Error(m["auth.pass6MinChar"]());
+            if (password !== confirmPassword) throw new Error(m["auth.passNotMatch"]());
 
             return await kyAspDotnet.post("api/auth/register", {
                 json: {

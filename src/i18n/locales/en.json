@@ -1,6 +1,5 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-
   "404": {
     "404message": "Oops! Can't find this page.",
     "goback": "Back to Homepage"
@@ -39,11 +38,18 @@
   "auth": {
     "email": "Email",
     "password": "Password",
-    "repeatPassword": "Repeat Password"
+    "repeatPassword": "Repeat Password",
+    "pass6MinChar": "Password must be at least 6 characters",
+    "passNotMatch": "Passwords do not match"
   },
   "profile": {
     "personalInfo": "Personal Information",
     "security": "Security",
+    "subscription": "Subscription",
+    "changePassword": "Change password",
+    "oldPassword": "Old password",
+    "newPassword": "New password",
+    "repeatNewPassword": "Repeat new password",
     "alert": {
       "imgOverSizeLimit": "Image size exceeds 2MB limit"
     }
@@ -51,6 +57,7 @@
   "app": {
     "overview": "Overview",
     "expenses": "Expenses",
+    "category": "Category",
     "budgetLimit": "Budget Limit",
     "addExpense": "Add Expense",
     "addCategory": "Add Category",

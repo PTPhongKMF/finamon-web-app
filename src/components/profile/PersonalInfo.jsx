@@ -103,7 +103,7 @@ export default function PersonalInfo() {
 
       <div className="flex">
         {viewState && (
-          <button onClick={() => setViewState(false)} title="hidhsids \n jdjsods"
+          <button onClick={() => setViewState(false)}
             className="flex gap-2 items-center bg-blue-500 hover:bg-blue-600 cursor-pointer text-sm text-white font-semibold py-2 px-4 min-w-25 h-fit rounded"
           >
             <UserPen />

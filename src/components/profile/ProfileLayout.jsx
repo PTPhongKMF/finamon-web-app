@@ -8,7 +8,7 @@ function ProfileLayout() {
   const user = useUserStore(state => state.user);
 
   return (
-    <div className="flex flex-col py-4 px-10 gap-8 bg-linear-to-br from-yellow-50 to-green-50">
+    <div className="grid grid-rows-[auto_1fr] min-h-170 py-4 px-10 gap-8 bg-linear-to-br from-yellow-50 to-green-50">
 
       <section className="grid grid-cols-2">
         <div className="flex gap-4 items-center">
@@ -25,12 +25,11 @@ function ProfileLayout() {
       </section>
 
 
-      <div className="grid grid-cols-[15rem_1fr] gap-6">
+      <div className="grid grid-cols-[15rem_1fr] gap-6 h-full">
         <LeftSideBar />
 
         <Outlet />
       </div>
-
 
     </div>
   );
