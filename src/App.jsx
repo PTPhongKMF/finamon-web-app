@@ -29,6 +29,7 @@ import FloatScrollToTop from "./components/FloatScrollToTop";
 import useUserActivityTracker from "./utils/analytic";
 import UserSecurity from "./pages/profile/UserSecurity";
 import UserSubscription from "./pages/profile/UserSubscription";
+import SuccessLogoutDialog from "./components/profile/SuccessLogoutDialog";
 
 function App() {
   useUserActivityTracker();
@@ -95,6 +96,7 @@ function App() {
         </Route>
       </Routes>
 
+      <SuccessLogoutDialog />
       <FloatScrollToTop />
     </>
   );

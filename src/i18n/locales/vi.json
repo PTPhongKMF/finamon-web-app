@@ -50,6 +50,7 @@
     "oldPassword": "Mật khẩu cũ",
     "newPassword": "Mật khẩu mới",
     "repeatNewPassword": "Nhập lại Mật khẩu mới",
+    "successPasswordChangeText": "Đổi mật khẩu thành công, vui lòng đăng nhập lại!",
     "alert": {
       "imgOverSizeLimit": "Dung lượng ảnh vượt 2MB"
     }

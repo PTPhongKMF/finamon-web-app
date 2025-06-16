@@ -50,6 +50,7 @@
     "oldPassword": "Old password",
     "newPassword": "New password",
     "repeatNewPassword": "Repeat new password",
+    "successPasswordChangeText": "Password changed successfully, please log in again!",
     "alert": {
       "imgOverSizeLimit": "Image size exceeds 2MB limit"
     }

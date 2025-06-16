@@ -87,6 +87,7 @@ export default function AddExpense() {
             </p>
 
             <button
+            disabled={!addForm.name || !addForm.amount || !addForm.note}
               className={clsx("w-50 h-10 shrink-0 rounded-md p-1 flex items-center justify-center justify-self-end",
                 (addForm.name && addForm.amount && addForm.note) ? "bg-gradient-to-r from-amber-600 to-yellow-400 cursor-pointer hover:brightness-90"
                   : "bg-gray-300 cursor-not-allowed"
