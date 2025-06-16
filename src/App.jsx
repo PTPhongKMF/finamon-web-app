@@ -2,6 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import SiteLayout from "./components/wrapper/SiteLayout";
 import Blog from "./pages/blog/Blog";
+import BlogCreate from "./pages/blog/BlogCreate";
+import BlogDetail from "./pages/blog/BlogDetail";
+import BlogEdit from "./pages/blog/BlogEdit";
 import Feature from "./pages/Feature";
 import Pricing from "./pages/Pricing";
 import Login from "./pages/auth/Login";
@@ -24,8 +27,8 @@ import AppBudget from "./pages/app/AppBudget";
 import AppLayout from "./components/app/AppLayout";
 import FloatScrollToTop from "./components/FloatScrollToTop";
 import useUserActivityTracker from "./utils/analytic";
-import UserSubscription from "./pages/profile/UserSubscription";
 import UserSecurity from "./pages/profile/UserSecurity";
+import UserSubscription from "./pages/profile/UserSubscription";
 
 function App() {
   useUserActivityTracker();
@@ -37,7 +40,15 @@ function App() {
       <Routes>
         <Route element={<SiteLayout />}>
           <Route index element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/blogs" element={<Blog />} />
+
+          {/* Protected blog routes - require login */}
+          <Route element={<ProtectedRoute allowedRoles={["User", "Staff", "Admin"]} />}>
+            <Route path="/blog/create" element={<BlogCreate />} />
+            <Route path="/blog/edit/:id" element={<BlogEdit />} />
+          </Route>
           <Route path="/features" element={<Feature />} />
           <Route path="/pricings" element={<Pricing />} />
 

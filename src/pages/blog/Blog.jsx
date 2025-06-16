@@ -1,49 +1,92 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import BlogCard from "../../components/CardHome/BlogCard";
+import { getAllBlogs, deleteBlog } from "../../api/blogApi";
+import { useUserStore } from "../../stores/userStore";
 
 function Blog() {
-  // Mock data for blog posts
-  const [blogPosts, setBlogPosts] = useState([
-    {
-      id: 1,
-      title: "Quản lý tài chính cá nhân hiệu quả",
-      summary:
-        "Những phương pháp đơn giản giúp bạn quản lý tài chính cá nhân tốt hơn và tiết kiệm nhiều hơn mỗi tháng.",
-      content: "Nội dung chi tiết về quản lý tài chính cá nhân...",
-      author: "Nguyễn Văn A",
-      date: "15/06/2023",
-      image: "/images/finance-management.jpg",
-      tags: ["tài chính", "tiết kiệm", "quản lý"],
-    },
-    {
-      id: 2,
-      title: "Cách lập kế hoạch đầu tư dài hạn",
-      summary:
-        "Hướng dẫn chi tiết cách lập kế hoạch đầu tư dài hạn phù hợp với mục tiêu tài chính của bạn.",
-      content: "Nội dung chi tiết về lập kế hoạch đầu tư dài hạn...",
-      author: "Trần Thị B",
-      date: "20/07/2023",
-      image: "/images/investment-planning.jpg",
-      tags: ["đầu tư", "kế hoạch", "dài hạn"],
-    },
-    {
-      id: 3,
-      title: "5 thói quen giúp tăng khả năng tiết kiệm",
-      summary:
-        "Khám phá 5 thói quen đơn giản nhưng hiệu quả giúp bạn cải thiện khả năng tiết kiệm tiền mỗi ngày.",
-      content: "Nội dung chi tiết về các thói quen tiết kiệm...",
-      author: "Lê Văn C",
-      date: "05/08/2023",
-      image: "/images/saving-habits.jpg",
-      tags: ["tiết kiệm", "thói quen", "tài chính cá nhân"],
-    },
-  ]);
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const user = useUserStore((state) => state.user);
 
-  // Function to handle delete (just for UI demo)
-  const handleDelete = (id) => {
+  // Fetch blog posts from API
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        setLoading(true);
+        const blogs = await getAllBlogs();
+        // Ensure blogs is an array before setting state
+        if (Array.isArray(blogs)) {
+          setBlogPosts(blogs);
+        } else {
+          console.error("API didn't return an array:", blogs);
+          setBlogPosts([]);
+        }
+        setError(null);
+      } catch (err) {
+        console.error("Failed to fetch blog posts:", err);
+        setError("Failed to load blog posts. Please try again later.");
+        // Fallback to mock data if API fails
+        setBlogPosts([
+          {
+            id: 1,
+            title: "Quản lý tài chính cá nhân hiệu quả",
+            summary:
+              "Những phương pháp đơn giản giúp bạn quản lý tài chính cá nhân tốt hơn và tiết kiệm nhiều hơn mỗi tháng.",
+            content: "Nội dung chi tiết về quản lý tài chính cá nhân...",
+            author: "Nguyễn Văn A",
+            date: "15/06/2023",
+            image: "/images/finance-management.jpg",
+            tags: ["tài chính", "tiết kiệm", "quản lý"],
+          },
+          {
+            id: 2,
+            title: "Cách lập kế hoạch đầu tư dài hạn",
+            summary:
+              "Hướng dẫn chi tiết cách lập kế hoạch đầu tư dài hạn phù hợp với mục tiêu tài chính của bạn.",
+            content: "Nội dung chi tiết về lập kế hoạch đầu tư dài hạn...",
+            author: "Trần Thị B",
+            date: "20/07/2023",
+            image: "/images/investment-planning.jpg",
+            tags: ["đầu tư", "kế hoạch", "dài hạn"],
+          },
+          {
+            id: 3,
+            title: "5 thói quen giúp tăng khả năng tiết kiệm",
+            summary:
+              "Khám phá 5 thói quen đơn giản nhưng hiệu quả giúp bạn cải thiện khả năng tiết kiệm tiền mỗi ngày.",
+            content: "Nội dung chi tiết về các thói quen tiết kiệm...",
+            author: "Lê Văn C",
+            date: "05/08/2023",
+            image: "/images/saving-habits.jpg",
+            tags: ["tiết kiệm", "thói quen", "tài chính cá nhân"],
+          },
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  // Function to handle delete blog post
+  const handleDelete = async (id) => {
     if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
-      setBlogPosts(blogPosts.filter((post) => post.id !== id));
+      try {
+        await deleteBlog(id);
+        // Ensure blogPosts is an array before filtering
+        if (Array.isArray(blogPosts)) {
+          setBlogPosts(blogPosts.filter((post) => post.id !== id));
+        } else {
+          // Refresh the page to get updated list
+          window.location.reload();
+        }
+      } catch (err) {
+        console.error("Failed to delete blog post:", err);
+        alert("Xóa bài viết không thành công. Vui lòng thử lại sau.");
+      }
     }
   };
 
@@ -128,58 +171,86 @@ function Blog() {
       {/* Blog Posts Section */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
-              <BlogCard key={post.id} post={post} onDelete={handleDelete} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-600"></div>
+            </div>
+          ) : error ? (
+            <div className="bg-red-100 text-red-700 p-4 rounded-lg max-w-3xl mx-auto">
+              <h3 className="text-lg font-semibold mb-2">Lỗi</h3>
+              <p>{error}</p>
+            </div>
+          ) : blogPosts.length === 0 ? (
+            <div className="text-center py-10">
+              <h3 className="text-xl font-semibold mb-2">
+                Chưa có bài viết nào
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Hãy là người đầu tiên tạo bài viết!
+              </p>
+              <Link
+                to="/blog/create"
+                className="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition"
+              >
+                Tạo bài viết
+              </Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.map((post) => (
+                <BlogCard key={post.id} post={post} onDelete={handleDelete} />
+              ))}
+            </div>
+          )}
 
-          {/* Pagination */}
-          <div className="mt-12 flex justify-center">
-            <nav className="flex items-center gap-2">
-              <button className="px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-100">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 19l-7-7 7-7"
-                  ></path>
-                </svg>
-              </button>
-              <button className="px-3 py-1 rounded-md bg-green-600 text-white">
-                1
-              </button>
-              <button className="px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-100">
-                2
-              </button>
-              <button className="px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-100">
-                3
-              </button>
-              <button className="px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-100">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5l7 7-7 7"
-                  ></path>
-                </svg>
-              </button>
-            </nav>
-          </div>
+          {/* Pagination - only show when we have posts */}
+          {!loading && !error && blogPosts.length > 0 && (
+            <div className="mt-12 flex justify-center">
+              <nav className="flex items-center gap-2">
+                <button className="px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-100">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15 19l-7-7 7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <button className="px-3 py-1 rounded-md bg-green-600 text-white">
+                  1
+                </button>
+                <button className="px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-100">
+                  2
+                </button>
+                <button className="px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-100">
+                  3
+                </button>
+                <button className="px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-100">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </button>
+              </nav>
+            </div>
+          )}
         </div>
       </section>
     </div>

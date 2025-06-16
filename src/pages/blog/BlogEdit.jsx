@@ -1,52 +1,72 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { getBlogById, updateBlog } from "../../api/blogApi";
 
 function BlogEdit() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
+
   const [formData, setFormData] = useState({
     title: "",
-    summary: "",
     content: "",
-    image: null,
-    tags: [],
+    imageFile: null,
   });
-
-  const [tagInput, setTagInput] = useState("");
   const [previewImage, setPreviewImage] = useState(null);
 
   // Fetch post data
   useEffect(() => {
-    // Simulate API fetch with timeout
-    setTimeout(() => {
-      // Mock data - in a real app, fetch from API based on id
-      const mockPost = {
-        id: parseInt(id),
-        title: "Quản lý tài chính cá nhân hiệu quả",
-        summary:
-          "Những phương pháp đơn giản giúp bạn quản lý tài chính cá nhân tốt hơn và tiết kiệm nhiều hơn mỗi tháng.",
-        content: `<p>Quản lý tài chính cá nhân là một kỹ năng quan trọng mà mọi người nên học. Trong bài viết này, chúng ta sẽ khám phá những phương pháp đơn giản nhưng hiệu quả để quản lý tài chính cá nhân tốt hơn.</p>
+    const fetchBlogPost = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const blogData = await getBlogById(id);
+
+        setFormData({
+          title: blogData.title || "",
+          content: blogData.content || "",
+          imageFile: null, // Can't set File object from string URL
+        });
+
+        // If there's an image URL, set it as preview
+        if (blogData.imageUrl) {
+          setPreviewImage(blogData.imageUrl);
+        }
+      } catch (err) {
+        console.error(`Failed to fetch blog with ID ${id}:`, err);
+        setError("Failed to load blog post. Please try again later.");
+
+        // Fallback to mock data if API fails
+        const mockPost = {
+          id: parseInt(id),
+          title: "Quản lý tài chính cá nhân hiệu quả",
+          content: `<p>Quản lý tài chính cá nhân là một kỹ năng quan trọng mà mọi người nên học. Trong bài viết này, chúng ta sẽ khám phá những phương pháp đơn giản nhưng hiệu quả để quản lý tài chính cá nhân tốt hơn.</p>
 
 <h3>1. Lập ngân sách chi tiêu</h3>
 <p>Lập ngân sách là bước đầu tiên và quan trọng nhất trong quản lý tài chính cá nhân. Bạn cần biết mình kiếm được bao nhiêu tiền và chi tiêu bao nhiêu mỗi tháng.</p>
 
 <h3>2. Theo dõi chi tiêu hàng ngày</h3>
 <p>Ghi chép lại mọi khoản chi tiêu, dù là nhỏ nhất. Sử dụng các ứng dụng quản lý tài chính như FINAMON để giúp bạn theo dõi chi tiêu một cách dễ dàng và trực quan.</p>`,
-        image: "/images/finance-management.jpg",
-        tags: ["tài chính", "tiết kiệm", "quản lý"],
-      };
+          image: "/images/finance-management.jpg",
+        };
 
-      setFormData({
-        title: mockPost.title,
-        summary: mockPost.summary,
-        content: mockPost.content,
-        image: null, // Can't set File object from string URL
-        tags: mockPost.tags,
-      });
+        setFormData({
+          title: mockPost.title,
+          content: mockPost.content,
+          imageFile: null,
+        });
 
-      setPreviewImage(mockPost.image);
-      setLoading(false);
-    }, 500);
+        setPreviewImage(mockPost.image);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogPost();
   }, [id]);
 
   const handleChange = (e) => {
@@ -62,7 +82,7 @@ function BlogEdit() {
     if (file) {
       setFormData({
         ...formData,
-        image: file,
+        imageFile: file,
       });
 
       // Create a preview
@@ -74,34 +94,40 @@ function BlogEdit() {
     }
   };
 
-  const addTag = () => {
-    if (tagInput.trim() && !formData.tags.includes(tagInput.trim())) {
-      setFormData({
-        ...formData,
-        tags: [...formData.tags, tagInput.trim()],
-      });
-      setTagInput("");
-    }
-  };
+  // No tag functions needed
 
-  const removeTag = (tagToRemove) => {
-    setFormData({
-      ...formData,
-      tags: formData.tags.filter((tag) => tag !== tagToRemove),
-    });
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSaving(true);
+    setError(null);
 
-    // In a real app, you would send this to an API
-    console.log("Form submitted for update:", formData);
+    try {
+      // Prepare the data for submission - only the three required fields
+      const blogData = {
+        title: formData.title,
+        content: formData.content,
+        imageFile: formData.imageFile,
+      };
 
-    // For demo purposes, just show an alert
-    alert("Bài viết đã được cập nhật thành công!");
+      console.log("Updating blog with data:", blogData);
 
-    // In a real app, you would redirect to the updated post
-    // history.push(`/blog/${id}`);
+      const response = await updateBlog(id, blogData);
+      console.log("Blog updated successfully:", response);
+
+      alert("Bài viết đã được cập nhật thành công!");
+
+      // Redirect to the updated post
+      navigate(`/blog/${id}`);
+    } catch (err) {
+      console.error("Failed to update blog post:", err);
+      if (err.message) {
+        setError(`Không thể cập nhật bài viết: ${err.message}`);
+      } else {
+        setError("Không thể cập nhật bài viết. Vui lòng thử lại sau.");
+      }
+    } finally {
+      setSaving(false);
+    }
   };
 
   if (loading) {
@@ -169,25 +195,6 @@ function BlogEdit() {
 
               <div className="mb-6">
                 <label
-                  htmlFor="summary"
-                  className="block text-gray-700 font-semibold mb-2"
-                >
-                  Tóm tắt bài viết
-                </label>
-                <textarea
-                  id="summary"
-                  name="summary"
-                  value={formData.summary}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  rows="3"
-                  placeholder="Nhập tóm tắt ngắn gọn về bài viết"
-                  required
-                ></textarea>
-              </div>
-
-              <div className="mb-6">
-                <label
                   htmlFor="content"
                   className="block text-gray-700 font-semibold mb-2"
                 >
@@ -199,7 +206,7 @@ function BlogEdit() {
                   value={formData.content}
                   onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  rows="10"
+                  rows="15"
                   placeholder="Nhập nội dung chi tiết của bài viết"
                   required
                 ></textarea>
@@ -210,7 +217,7 @@ function BlogEdit() {
 
               <div className="mb-6">
                 <label
-                  htmlFor="image"
+                  htmlFor="imageFile"
                   className="block text-gray-700 font-semibold mb-2"
                 >
                   Hình ảnh đại diện
@@ -218,8 +225,8 @@ function BlogEdit() {
                 <div className="flex items-center space-x-4">
                   <input
                     type="file"
-                    id="image"
-                    name="image"
+                    id="imageFile"
+                    name="imageFile"
                     onChange={handleImageChange}
                     className="border border-gray-300 rounded-lg p-2"
                     accept="image/*"
@@ -237,7 +244,7 @@ function BlogEdit() {
                           setPreviewImage(null);
                           setFormData({
                             ...formData,
-                            image: null,
+                            imageFile: null,
                           });
                         }}
                         className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1"
@@ -262,73 +269,56 @@ function BlogEdit() {
                 </div>
               </div>
 
-              <div className="mb-8">
-                <label className="block text-gray-700 font-semibold mb-2">
-                  Thẻ tag
-                </label>
-                <div className="flex items-center">
-                  <input
-                    type="text"
-                    value={tagInput}
-                    onChange={(e) => setTagInput(e.target.value)}
-                    className="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                    placeholder="Nhập tag và nhấn Thêm"
-                  />
-                  <button
-                    type="button"
-                    onClick={addTag}
-                    className="ml-2 bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 transition"
-                  >
-                    Thêm
-                  </button>
+              {error && (
+                <div className="mb-6 bg-red-100 text-red-700 p-4 rounded-lg">
+                  <p>{error}</p>
                 </div>
-
-                {formData.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {formData.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-green-100 text-green-800 px-3 py-1 rounded-full flex items-center"
-                      >
-                        {tag}
-                        <button
-                          type="button"
-                          onClick={() => removeTag(tag)}
-                          className="ml-2 text-green-800 hover:text-red-500"
-                        >
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M6 18L18 6M6 6l12 12"
-                            ></path>
-                          </svg>
-                        </button>
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
+              )}
 
               <div className="flex justify-end space-x-4">
                 <Link
                   to={`/blog/${id}`}
                   className="bg-gray-300 text-gray-800 py-3 px-6 rounded-lg hover:bg-gray-400 transition"
+                  disabled={saving}
                 >
                   Hủy
                 </Link>
                 <button
                   type="submit"
-                  className="bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition"
+                  className={`${
+                    saving
+                      ? "bg-green-400 cursor-not-allowed"
+                      : "bg-green-600 hover:bg-green-700"
+                  } text-white py-3 px-6 rounded-lg transition flex items-center`}
+                  disabled={saving}
                 >
-                  Cập nhật bài viết
+                  {saving ? (
+                    <>
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Đang cập nhật...
+                    </>
+                  ) : (
+                    "Cập nhật bài viết"
+                  )}
                 </button>
               </div>
             </form>
