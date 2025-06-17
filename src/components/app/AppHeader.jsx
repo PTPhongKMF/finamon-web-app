@@ -35,7 +35,7 @@ export default function AppHeader() {
 
         <Popover>
           <PopoverTrigger className="w-full max-w-80">
-            <div className="text-black cursor-pointer flex gap-10 w-full px-5 min-h-8 text-2xl font-bold bg-white/20 border-amber-200 border-2 rounded-md items-center justify-center">
+            <div className="cursor-pointer flex gap-10 w-full px-5 min-h-8 text-2xl font-bold bg-black/15 border-amber-200 border-2 rounded-md items-center justify-center">
               <div className="flex gap-2 items-center">
                 <CalendarDays />
                 {format(selectedMonthYear, "MM-YYYY")}
