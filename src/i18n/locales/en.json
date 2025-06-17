@@ -34,7 +34,9 @@
     "confirm": "Confirm",
     "cancel": "Cancel",
     "fillAllFieldText": "Please fill in all required fields",
-    "today": "Today"
+    "today": "Today",
+    "createdAt": "Created at",
+    "updatedAt": "Updated at"
   },
   "auth": {
     "email": "Email",

@@ -34,7 +34,9 @@
     "confirm": "Xác nhận",
     "cancel": "Hủy bỏ",
     "fillAllFieldText": "Vui lòng điền đầy đủ thông tin vào các ô trống",
-    "today": "Hôm nay"
+    "today": "Hôm nay",
+    "createdAt": "Tạo lúc",
+    "updatedAt": "Cập nhật lúc"
   },
   "auth": {
     "email": "Email",

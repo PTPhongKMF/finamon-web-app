@@ -35,7 +35,7 @@ export default function AppHeader() {
 
         <Popover>
           <PopoverTrigger className="w-full max-w-80">
-            <div className="cursor-pointer flex gap-10 w-full px-5 min-h-8 text-2xl font-bold border-amber-400 border-3 rounded-md items-center justify-center">
+            <div className="text-black cursor-pointer flex gap-10 w-full px-5 min-h-8 text-2xl font-bold bg-white/20 border-amber-200 border-2 rounded-md items-center justify-center">
               <div className="flex gap-2 items-center">
                 <CalendarDays />
                 {format(selectedMonthYear, "MM-YYYY")}
@@ -54,20 +54,6 @@ export default function AppHeader() {
             />
           </PopoverContent>
         </Popover>
-
-
-
-        {/* <Select defaultValue="4-2025">
-          <SelectTrigger className="max-w-[20rem] min-h-8 text-3xl font-bold border-amber-400 border-3">
-            <SelectValue placeholder="Select" />
-          </SelectTrigger>
-          <SelectContent className="bg-green-200">
-            <SelectItem value="2-2025">2-2025</SelectItem>
-            <SelectItem value="3-2025">3-2025</SelectItem>
-            <SelectItem value="4-2025">4-2025</SelectItem>
-            <SelectItem value="5-2025">5-2025</SelectItem>
-          </SelectContent>
-        </Select> */}
       </Card>
     </section>
   )

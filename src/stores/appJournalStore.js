@@ -12,6 +12,17 @@ export const useAppDateStore = create((set) => ({
   }
 }))
 
+export const useAppTableStore = create((set) => ({
+  PageNumber: 1,
+  PageSize: 10,
+  SortBy: "CreatedDate",
+  SortDescending: true,
+  setPageNumber: (pageNumber) => set({ PageNumber: pageNumber }),
+  setPageSize: (pageSize) => set({ PageSize: pageSize }),
+  setSortBy: (sortBy) => set({ SortBy: sortBy }),
+  setSortDescending: (sortDescending) => set({ SortDescending: sortDescending })
+}))
+
 export const useAppJournalStore = create((set) => ({
   accordionState: (() => {
     return Cookies.get("accState")
