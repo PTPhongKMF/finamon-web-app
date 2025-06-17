@@ -17,6 +17,7 @@
       "account": "Account",
       "logout": "Logout"
     },
+    "areYouSure?": "Are you sure?",
     "error": "Error",
     "success": "Success",
     "uploadImg": "Upload Image",
@@ -63,6 +64,7 @@
     "addExpense": "Add Expense",
     "addCategory": "Add Category",
     "toExpenseDetails": "To expense details",
-    "selectYear": "Select Year"
+    "selectYear": "Select Year",
+    "areYouSureWantToDeleteCategory": "Are you sure you want to delete this category"
   }
 }

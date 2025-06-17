@@ -25,7 +25,15 @@ export default function AddCategory() {
   ))
 
   const fetchCategories = useQuery({
-    queryKey: ["all_category", user.id]
+    queryKey: ["all_category", user.id],
+    queryFn: async () => {
+      return await kyAspDotnet.get(`api/category/user/${user.id}`, {
+        searchParams: {
+          pageNumber: 1,
+          pageSize: 1000
+        }
+      }).json();
+    },
   })
 
   const addCategory = useMutation({

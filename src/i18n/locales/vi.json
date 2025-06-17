@@ -17,6 +17,7 @@
       "account": "Tài Khoản",
       "logout": "Đăng Xuất"
     },
+    "areYouSure?": "Bạn có chắc chắn?",
     "error": "Lỗi",
     "success": "Thành Công",
     "uploadImg": "Tải ảnh lên",
@@ -63,6 +64,7 @@
     "addExpense": "Thêm chi tiêu",
     "addCategory": "Thêm danh mục",
     "toExpenseDetails": "Đến chi tiết ghi chép",
-    "selectYear": "Chọn năm"
+    "selectYear": "Chọn năm",
+    "areYouSureWantToDeleteCategory": "Bạn có chắc chắn muốn xóa danh mục"
   }
 }
