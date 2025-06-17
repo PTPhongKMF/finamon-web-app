@@ -60,6 +60,7 @@
     "overview": "Tổng Quan",
     "expenses": "Chi Tiêu",
     "category": "Danh mục",
+    "editCategory": "Sửa danh mục",
     "budgetLimit": "Giới hạn ngân sách",
     "addExpense": "Thêm chi tiêu",
     "addCategory": "Thêm danh mục",

@@ -60,6 +60,7 @@
     "overview": "Overview",
     "expenses": "Expenses",
     "category": "Category",
+    "editCategory": "Edit category",
     "budgetLimit": "Budget Limit",
     "addExpense": "Add Expense",
     "addCategory": "Add Category",
