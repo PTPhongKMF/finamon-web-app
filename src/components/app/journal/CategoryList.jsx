@@ -108,9 +108,9 @@ export default function CategoryList() {
               <DropdownMenu modal={false}>
                 <DropdownMenuTrigger asChild>
                   <button
-                    className="rounded-full p-0.5 hover:bg-gray-300 cursor-pointer"
+                    className="rounded-full p-0.5 hover:bg-amber-200 cursor-pointer"
                   >
-                    <EllipsisVertical />
+                    <EllipsisVertical className="text-green-500"/>
                   </button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="min-w-20">
