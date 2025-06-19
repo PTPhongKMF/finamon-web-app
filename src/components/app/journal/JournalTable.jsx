@@ -8,6 +8,7 @@ import { kyAspDotnet } from "../../../api/ky";
 import { useUserStore } from "../../../stores/userStore";
 import { useAppDateStore, useAppTableStore } from "../../../stores/appJournalStore";
 import { shallow, useShallow } from "zustand/shallow";
+import { useEffect } from "react";
 
 export default function JournalTable() {
   const user = useUserStore(state => state.user);
@@ -39,7 +40,7 @@ export default function JournalTable() {
       }).json()
     }
   })
-
+  
   if (fetchExpenses.isPending)
     return (
       <div className="flex justify-center items-center space-x-1 min-h-50">
@@ -80,7 +81,7 @@ export default function JournalTable() {
                       {expense.description}
                     </div>
                   </TableCell>
-                  <TableCell className="text-right">{format(expense.createdAt, "DD/MM/YYYY, HH:mm:ss")}</TableCell>
+                  <TableCell className="text-right">{format(expense.date, "DD/MM/YYYY, HH:mm:ss")}</TableCell>
                   <TableCell>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
