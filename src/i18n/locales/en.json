@@ -36,7 +36,8 @@
     "fillAllFieldText": "Please fill in all required fields",
     "today": "Today",
     "createdAt": "Created at",
-    "updatedAt": "Updated at"
+    "updatedAt": "Updated at",
+    "spent": "Spent"
   },
   "auth": {
     "email": "Email",
@@ -61,6 +62,7 @@
   "app": {
     "overview": "Overview",
     "expenses": "Expenses",
+    "expenseReport": "Expense Report",
     "category": "Category",
     "editCategory": "Edit category",
     "budgetLimit": "Budget Limit",

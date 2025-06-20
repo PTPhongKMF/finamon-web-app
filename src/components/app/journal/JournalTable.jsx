@@ -7,8 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 import { kyAspDotnet } from "../../../api/ky";
 import { useUserStore } from "../../../stores/userStore";
 import { useAppDateStore, useAppTableStore } from "../../../stores/appJournalStore";
-import { shallow, useShallow } from "zustand/shallow";
-import { useEffect } from "react";
+import { useShallow } from "zustand/shallow";
+import clsx from "clsx";
 
 export default function JournalTable() {
   const user = useUserStore(state => state.user);
@@ -71,8 +71,11 @@ export default function JournalTable() {
           </TableHeader>
           <TableBody>
             {(fetchExpenses.isSuccess && fetchExpenses?.data?.items?.length > 0) ? (
-              fetchExpenses.data.items.map((expense) => (
-                <TableRow key={expense.id}>
+              fetchExpenses.data.items.map((expense, index) => (
+                <TableRow key={expense.id} className={clsx(
+                  "hover:bg-amber-100",
+                  index % 2 === 0 && "bg-gray-200"
+                  )}>
                   <TableCell className="break-all">{expense.name}</TableCell>
                   <TableCell className="text-right">{expense.amount.toLocaleString()}</TableCell>
                   <TableCell className="break-all">{expense.categoryName}</TableCell>

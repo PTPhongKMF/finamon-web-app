@@ -21,14 +21,14 @@ function LeftSideBar() {
           <NotebookText />
           {m["app.expenses"]()}
         </Link>
-        <Link to="/app/budget"
+        {/* <Link to="/app/budget"
           className={clsx("flex gap-2 rounded-r-md transition-all",
             pathname.endsWith("budget") ? "border-blue-600 bg-white py-1 px-2 border-l-4 font-semibold" : "border-transparent")}>
           <ShieldAlert />
           <span className="text-ellipsis overflow-hidden whitespace-nowrap">
             {m["app.budgetLimit"]()}
           </span>
-        </Link>
+        </Link> */}
       </nav>
     );
   } else if (pathname.startsWith("/dashboard/staff")) {

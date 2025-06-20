@@ -1,6 +1,5 @@
 import { Card } from "../../components/shadcn/ui/card"
 import JournalTable from "../../components/app/journal/JournalTable"
-import { expenseList } from "./testExpenseList"
 import AddExpense from "../../components/app/journal/AddExpense"
 import AddCategory from "../../components/app/journal/AddCategory"
 import CategoryList from "../../components/app/journal/CategoryList"
@@ -16,7 +15,7 @@ export default function AppJournal() {
           </Card>
 
           <Card className="p-4 bg-neutral-50 border-t-8 border-x-2 border-yellow-400">
-            <JournalTable data={expenseList} />
+            <JournalTable />
           </Card>
         </section>
 

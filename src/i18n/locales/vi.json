@@ -36,7 +36,8 @@
     "fillAllFieldText": "Vui lòng điền đầy đủ thông tin vào các ô trống",
     "today": "Hôm nay",
     "createdAt": "Tạo lúc",
-    "updatedAt": "Cập nhật lúc"
+    "updatedAt": "Cập nhật lúc",
+    "spent": "Đã tiêu"
   },
   "auth": {
     "email": "Email",
@@ -61,6 +62,7 @@
   "app": {
     "overview": "Tổng Quan",
     "expenses": "Chi Tiêu",
+    "expenseReport": "Báo cáo chi tiêu",
     "category": "Danh mục",
     "editCategory": "Sửa danh mục",
     "budgetLimit": "Giới hạn ngân sách",

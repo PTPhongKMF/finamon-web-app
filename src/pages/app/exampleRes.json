@@ -1,0 +1,32 @@
+{
+  "pageIndex": 0,
+  "totalPages": 0,
+  "hasPreviousPage": true,
+  "hasNextPage": true,
+  "items": [
+    {
+      "id": 0,
+      "name": "string",
+      "color": "string",
+      "userId": 0,
+      "createdDate": "2025-06-20T16:30:31.454Z",
+      "expenses": [
+        {
+          "id": 0,
+          "name": "string",
+          "description": "string",
+          "amount": 0,
+          "date": "2025-06-20T16:30:31.454Z",
+          "updateDate": "2025-06-20T16:30:31.454Z",
+          "userId": 0,
+          "userName": "string",
+          "categoryId": 0,
+          "categoryName": "string",
+          "color": "string",
+          "categoryIsDelete": true
+        }
+      ]
+    }
+  ],
+  "totalCount": 0
+}

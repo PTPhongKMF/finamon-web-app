@@ -1,9 +1,9 @@
-import { kyAspDotnet } from './ky.js';
-import { buildFormData } from '../utils/api.js';
+import { kyAspDotnet } from "./ky.js";
+import { buildFormData } from "../utils/api.js";
 
 export const getAllBlogs = async () => {
   try {
-    const response = await kyAspDotnet.get('api/blog').json();
+    const response = await kyAspDotnet.get("api/blog").json();
     
     let blogs = [];
     
@@ -47,15 +47,15 @@ export const getBlogsByUserId = async (userId) => {
 export const createBlog = async (blogData) => {
   try {
     const formData = new FormData();
-    formData.append('title', blogData.title || '');
-    formData.append('content', blogData.content || '');
+    formData.append("title", blogData.title || "");
+    formData.append("content", blogData.content || "");
     
     if (blogData.imageFile instanceof File) {
-      formData.append('imageFile', blogData.imageFile);
+      formData.append("imageFile", blogData.imageFile);
     }
     
     try {
-      const response = await kyAspDotnet.post('api/blog', {
+      const response = await kyAspDotnet.post("api/blog", {
         body: formData
       }).json();
       
@@ -77,9 +77,9 @@ export const updateBlog = async (id, blogData) => {
   try {
     if (blogData.imageFile instanceof File) {
       const formData = new FormData();
-      formData.append('title', blogData.title || '');
-      formData.append('content', blogData.content || '');
-      formData.append('imageFile', blogData.imageFile);
+      formData.append("title", blogData.title || "");
+      formData.append("content", blogData.content || "");
+      formData.append("imageFile", blogData.imageFile);
       
       const response = await kyAspDotnet.put(`api/blog/${id}`, {
         body: formData
@@ -88,8 +88,8 @@ export const updateBlog = async (id, blogData) => {
       return response;
     } else {
       const jsonData = {
-        title: blogData.title || '',
-        content: blogData.content || ''
+        title: blogData.title || "",
+        content: blogData.content || ""
       };
       
       const response = await kyAspDotnet.put(`api/blog/${id}`, {
@@ -121,11 +121,11 @@ export const deleteBlog = async (id) => {
       const status = error.response.status;
       
       if (status === 403) {
-        throw new Error('Không có quyền xóa bài viết này (403 Forbidden)');
+        throw new Error("Không có quyền xóa bài viết này (403 Forbidden)");
       } else if (status === 404) {
-        throw new Error('Bài viết không tồn tại (404 Not Found)');
+        throw new Error("Bài viết không tồn tại (404 Not Found)");
       } else if (status === 401) {
-        throw new Error('Chưa đăng nhập hoặc phiên đăng nhập hết hạn (401 Unauthorized)');
+        throw new Error("Chưa đăng nhập hoặc phiên đăng nhập hết hạn (401 Unauthorized)");
       }
       
       try {

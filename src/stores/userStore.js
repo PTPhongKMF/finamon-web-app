@@ -3,9 +3,12 @@ import Cookies from "js-cookie";
 
 export const useUserStore = create((set, get) => ({
   user: (() => {
-    if (!Cookies.get("token")) return null;
+    if (!Cookies.get("token")) {
+      localStorage.removeItem("user");
+      return null;
+    }
 
-    const savedUser = localStorage.getItem('user');
+    const savedUser = localStorage.getItem("user");
     return savedUser ? JSON.parse(savedUser) : null;
   })(),
 
@@ -28,7 +31,7 @@ export const useUserStore = create((set, get) => ({
 
   clearUser: () => {
     set({ user: null });
-    localStorage.removeItem('user');
-    Cookies.remove('token');
+    localStorage.removeItem("user");
+    Cookies.remove("token");
   }
 }))

@@ -14,7 +14,7 @@ export const useAppDateStore = create((set) => ({
 
 export const useAppTableStore = create((set) => ({
   PageNumber: 1,
-  PageSize: 10,
+  PageSize: 100,
   SortBy: "CreatedDate",
   SortDescending: true,
   setPageNumber: (pageNumber) => set({ PageNumber: pageNumber }),
