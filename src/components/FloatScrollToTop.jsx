@@ -26,7 +26,7 @@ export default function FloatScrollToTop() {
   return createPortal(
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 rounded-full p-3 shadow-lg bg-white hover:bg-gray-100 border-3 border-yellow-700 cursor-pointer"
+      className="fixed bottom-24 right-6 rounded-full p-3 shadow-lg bg-white hover:bg-gray-100 border-1 border-yellow-700 cursor-pointer"
     >
       <ArrowUp className="size-5" />
     </button>,

@@ -30,6 +30,7 @@ import useUserActivityTracker from "./utils/analytic";
 import UserSecurity from "./pages/profile/UserSecurity";
 import UserSubscription from "./pages/profile/UserSubscription";
 import SuccessLogoutDialog from "./components/profile/SuccessLogoutDialog";
+import FloatAIChat from "./components/FloatAIChat";
 
 function App() {
   useUserActivityTracker();
@@ -97,6 +98,8 @@ function App() {
       </Routes>
 
       <SuccessLogoutDialog />
+
+      <FloatAIChat />
       <FloatScrollToTop />
     </>
   );

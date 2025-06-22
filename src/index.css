@@ -145,3 +145,41 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes double-spin {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(720deg); }
+  45% { transform: rotate(720deg); }
+  65% { transform: rotate(1440deg); }
+  100% { transform: rotate(1440deg); }
+}
+
+@keyframes pulse-ring {
+  0%, 45% { 
+    transform: scale(1); 
+    opacity: 0;
+  }
+  5%, 50% { 
+    transform: scale(1); 
+    opacity: 0.7;
+  }
+  20%, 65% { 
+    transform: scale(2); 
+    opacity: 0;
+  }
+  100% { 
+    transform: scale(2); 
+    opacity: 0;
+  }
+}
+
+@layer utilities {
+  .animate-double-spin {
+    animation: double-spin 5s ease-in-out infinite;
+    animation-fill-mode: forwards;
+  }
+  
+  .animate-pulse-ring {
+    animation: pulse-ring 5s ease-in-out infinite;
+  }
+}

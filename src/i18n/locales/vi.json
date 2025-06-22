@@ -37,7 +37,8 @@
     "today": "Hôm nay",
     "createdAt": "Tạo lúc",
     "updatedAt": "Cập nhật lúc",
-    "spent": "Đã tiêu"
+    "spent": "Đã tiêu",
+    "age": "Tuổi"
   },
   "auth": {
     "email": "Email",
@@ -56,7 +57,8 @@
     "repeatNewPassword": "Nhập lại Mật khẩu mới",
     "successPasswordChangeText": "Đổi mật khẩu thành công, vui lòng đăng nhập lại!",
     "alert": {
-      "imgOverSizeLimit": "Dung lượng ảnh vượt 2MB"
+      "imgOverSizeLimit": "Dung lượng ảnh vượt 2MB",
+      "ageIsInvalid": "Tuổi không hợp lệ, phải lớn hơn 0"
     }
   },
   "app": {
@@ -70,6 +72,10 @@
     "addCategory": "Thêm danh mục",
     "toExpenseDetails": "Đến chi tiết ghi chép",
     "selectYear": "Chọn năm",
-    "areYouSureWantToDeleteCategory": "Bạn có chắc chắn muốn xóa danh mục"
+    "areYouSureWantToDeleteCategory": "Bạn có chắc chắn muốn xóa danh mục",
+    "AI": {
+      "chatWithAI": "Chat với AI",
+      "askMeAnything": "Hỏi mình bất cứ điều gì..."
+    }
   }
 }

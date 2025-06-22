@@ -37,6 +37,7 @@ function Login() {
                 id: data?.data?.user?.id,
                 email: data?.data?.user?.email,
                 name: data?.data?.user?.userName || "",
+                age: data?.data?.user?.age || 0,
                 phone: data?.data?.user?.phone || "",
                 country: data?.data?.user?.country || "",
                 roles: userRoles,

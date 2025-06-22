@@ -37,7 +37,8 @@
     "today": "Today",
     "createdAt": "Created at",
     "updatedAt": "Updated at",
-    "spent": "Spent"
+    "spent": "Spent",
+    "age": "Age"
   },
   "auth": {
     "email": "Email",
@@ -56,7 +57,8 @@
     "repeatNewPassword": "Repeat new password",
     "successPasswordChangeText": "Password changed successfully, please log in again!",
     "alert": {
-      "imgOverSizeLimit": "Image size exceeds 2MB limit"
+      "imgOverSizeLimit": "Image size exceeds 2MB limit",
+      "ageIsInvalid": "Age is invalid, must be larger than 0"
     }
   },
   "app": {
@@ -70,6 +72,10 @@
     "addCategory": "Add Category",
     "toExpenseDetails": "To expense details",
     "selectYear": "Select Year",
-    "areYouSureWantToDeleteCategory": "Are you sure you want to delete this category"
+    "areYouSureWantToDeleteCategory": "Are you sure you want to delete this category",
+    "AI": {
+      "chatWithAI": "Chat with AI",
+      "askMeAnything": "Ask me anything..."
+    }
   }
 }

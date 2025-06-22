@@ -26,9 +26,12 @@ export default function PersonalInfo() {
 
   const updateUserInfo = useMutation({
     mutationFn: async () => {
+      if (viewData.age <= 0) throw new Error(m["profile.alert.ageIsInvalid"]())
+
       return await kyAspDotnet.put(`api/user/${user.id}`, {
         json: {
           ...(viewData.name && { userName: viewData.name }),
+          ...(viewData.age && { age: viewData.age }),
           ...(viewData.phone && { phone: viewData.phone }),
           ...(viewData.country && { country: viewData.country })
         }
@@ -37,6 +40,7 @@ export default function PersonalInfo() {
     onSuccess: (data) => {
       setUser({
         name: data.userName,
+        age: data.age,
         phone: data.phone,
         country: data.country
       })
@@ -48,10 +52,11 @@ export default function PersonalInfo() {
   useEffect(() => {
     setViewData({
       name: user.name,
+      age: user.age,
       phone: user.phone,
       country: user.country
     })
-  }, [viewState, user.country, user.name, user.phone])
+  }, [viewState, user.country, user.name, user.phone, user.age])
 
   useEffect(() => {
     setShowRes(false);
@@ -60,7 +65,7 @@ export default function PersonalInfo() {
   return (
     <section className="flex flex-col gap-8 justify-between">
 
-      <div className="grid grid-cols-[auto_auto] grid-rows-3 gap-6 w-fit h-fit items-center">
+      <div className="grid grid-cols-[auto_auto] grid-rows-4 gap-6 w-fit h-fit items-center">
         <label htmlFor="name">
           {m["common.name"]() + ":"}
         </label>
@@ -69,6 +74,16 @@ export default function PersonalInfo() {
           className={clsx("h-9 w-full px-3 py-1 items-center",
             viewState ? "text-sm" : "rounded-md border",
             !viewData.name && "text-gray-500 italic"
+          )} />
+
+        <label htmlFor="age">
+          {m["common.age"]() + ":"}
+        </label>
+        <input type="number" min="0" id="age" disabled={viewState} placeholder={m["common.empty"]()}
+          value={viewState ? user.age : viewData.age} onChange={(e) => setViewData({ ...viewData, age: e.target.value })}
+          className={clsx("h-9 w-full px-3 py-1 items-center",
+            viewState ? "text-sm" : "rounded-md border",
+            !viewData.age && "text-gray-500 italic"
           )} />
 
         <label>
@@ -84,20 +99,20 @@ export default function PersonalInfo() {
         <label>
           {m["common.country"]() + ":"}
         </label>
-        {viewState ? 
-        <p className="px-3 py-1 text-sm">
-          {user.country}
-        </p>
-        : 
-        <Suspense fallback={<p>...</p>}>
-          <CountryDropdown disabled={viewState} defaultOptionLabel={m["common.empty"]()}
-            value={viewState ? user.country : viewData.country} onChange={(val) => setViewData({ ...viewData, country: val })}
-            className={clsx("h-9 w-full px-3 py-1",
-              viewState ? "text-sm" : "rounded-md border",
-              (viewState && !viewData.country) && "text-gray-500 italic opacity-50"
-            )}
-          />
-        </Suspense>
+        {viewState ?
+          <p className="px-3 py-1 text-sm">
+            {user.country}
+          </p>
+          :
+          <Suspense fallback={<p>...</p>}>
+            <CountryDropdown disabled={viewState} defaultOptionLabel={m["common.empty"]()}
+              value={viewState ? user.country : viewData.country} onChange={(val) => setViewData({ ...viewData, country: val })}
+              className={clsx("h-9 w-full px-3 py-1",
+                viewState ? "text-sm" : "rounded-md border",
+                (viewState && !viewData.country) && "text-gray-500 italic opacity-50"
+              )}
+            />
+          </Suspense>
         }
       </div>
 
@@ -123,7 +138,7 @@ export default function PersonalInfo() {
               {m["common.cancel"]()}
             </button>
             <button onClick={updateUserInfo.mutate}
-              disabled={!viewData.name || !viewData.phone || !viewData.country || updateUserInfo.isPending}
+              disabled={!viewData.name || !viewData.age || !viewData.phone || !viewData.country || updateUserInfo.isPending}
               className={clsx("flex gap-2 items-center bg-green-500 hover:bg-green-600 cursor-pointer text-sm text-white font-semibold py-2 px-4 min-w-25 h-fit rounded",
                 "disabled:bg-gray-500 disabled:cursor-not-allowed"
               )}

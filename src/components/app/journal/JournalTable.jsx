@@ -3,7 +3,7 @@ import { format, monthEnd, monthStart } from "@formkit/tempo";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../../shadcn/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import { m } from "../../../i18n/paraglide/messages";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { kyAspDotnet } from "../../../api/ky";
 import { useUserStore } from "../../../stores/userStore";
 import { useAppDateStore, useAppTableStore } from "../../../stores/appJournalStore";
@@ -40,7 +40,14 @@ export default function JournalTable() {
       }).json()
     }
   })
-  
+
+  const deleteExpense = useMutation({
+    mutationFn: async (id) => {
+      return await kyAspDotnet.delete(`api/expense/${id}`).json()
+    },
+    onSuccess: fetchExpenses.refetch
+  })
+
   if (fetchExpenses.isPending)
     return (
       <div className="flex justify-center items-center space-x-1 min-h-50">
@@ -54,6 +61,11 @@ export default function JournalTable() {
       {fetchExpenses.isError && (
         <p className="text-red-500 font-semibold mb-4">
           {fetchExpenses.error.message}
+        </p>
+      )}
+      {deleteExpense.isError && (
+        <p className="text-red-500 font-semibold mb-4">
+          {deleteExpense.error.message}
         </p>
       )}
 
@@ -75,7 +87,7 @@ export default function JournalTable() {
                 <TableRow key={expense.id} className={clsx(
                   "hover:bg-amber-100",
                   index % 2 === 0 && "bg-gray-200"
-                  )}>
+                )}>
                   <TableCell className="break-all">{expense.name}</TableCell>
                   <TableCell className="text-right">{expense.amount.toLocaleString()}</TableCell>
                   <TableCell className="break-all">{expense.categoryName}</TableCell>
@@ -98,7 +110,8 @@ export default function JournalTable() {
                         >
                           {m["common.edit"]()}
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="text-red-500">
+                        <DropdownMenuItem className="text-red-500"
+                          onClick={() => deleteExpense.mutate(expense.id)}>
                           {m["common.delete"]()}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
