@@ -42,3 +42,23 @@ export const useAppJournalCategoryStore = create((set) => ({
     set({ accordionState: value });
   }
 }))
+
+export const useAppReportStore = create((set, get) => ({
+  reports: (() => {
+    const storedReports = sessionStorage.getItem("reports");
+    return storedReports ? JSON.parse(storedReports) : { stored: [] };
+  })(),
+  setReports: (newReport) => {
+    if (newReport) {
+      set({
+        reports: {
+          stored: [...get().reports.stored, newReport]
+        }
+      })
+      sessionStorage.setItem("reports", JSON.stringify(get().reports))
+    } else {
+      sessionStorage.removeItem("reports");
+      set({ reports: { stored: [] } })
+    }
+  }
+}))

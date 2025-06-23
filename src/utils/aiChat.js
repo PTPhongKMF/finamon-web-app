@@ -21,3 +21,19 @@ export function generateChatMessage(msg) {
 
   return finalMsg;
 }
+
+export function generateReportMessage(expenseData) {
+  const { user } = useUserStore.getState();
+
+  const finalMsg =
+    "Here is my current expense by cateogry, stringify json. Give me your overview/report, and recommendations, answer in same language as country i provided below, " + 
+    "default to english if not provided: \n" +
+    JSON.stringify(expenseData) + "\n" +
+    "Here are some of my personal info as well if it help with your report: \n" +
+    "name: " + user.name || "Not provided" + "," +
+    "age: " + user.age || "Not provided" + "," +
+    "country: " + user.country || "Not provided" + "\n"
+    "Dont ask something along like need more infomartion, etc... just give recommendations exactly, short and concise"
+
+  return finalMsg;
+}
