@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import SiteLayout from "./components/wrapper/SiteLayout";
-import Blog from "./pages/blog/Blog";
+// import Blog from "./pages/blog/Blog";
 import BlogCreate from "./pages/blog/BlogCreate";
-import BlogDetail from "./pages/blog/BlogDetail";
+// import BlogDetail from "./pages/blog/BlogDetail";
 import BlogEdit from "./pages/blog/BlogEdit";
 import Feature from "./pages/Feature";
 import Pricing from "./pages/Pricing";
@@ -32,6 +32,8 @@ import UserSubscription from "./pages/profile/UserSubscription";
 import SuccessLogoutDialog from "./components/profile/SuccessLogoutDialog";
 import FloatAIChat from "./components/FloatAIChat";
 import MockFeature from "./pages/MockFeature";
+import MockBlog from "./pages/blog/MockBlog";
+import MockBlogDetail from "./pages/blog/MockBlogDetail";
 
 function App() {
   useUserActivityTracker();
@@ -43,9 +45,11 @@ function App() {
       <Routes>
         <Route element={<SiteLayout />}>
           <Route index element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogDetail />} />
-          <Route path="/blogs" element={<Blog />} />
+          {/* <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetail />} /> */}
+          <Route path="/blog" element={<MockBlog />} />
+          <Route path="/blog/:slug" element={<MockBlogDetail />} />
+          <Route path="/blogs" element={<MockBlog />} />
 
           {/* Protected blog routes - require login */}
           <Route element={<ProtectedRoute allowedRoles={["User", "Staff", "Admin"]} />}>
