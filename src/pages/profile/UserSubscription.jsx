@@ -1,7 +1,16 @@
-import React from "react"
+import BuySubscription from "../../components/profile/BuySubscription";
+import CurrentSubscription from "../../components/profile/CurrentSubscription";
+
 
 export default function UserSubscription() {
+
   return (
-    <div>UserSubscription</div>
+    <article className="grid auto-rows-auto gap-4">
+
+      <CurrentSubscription />
+
+      <BuySubscription />
+
+    </article>
   )
 }

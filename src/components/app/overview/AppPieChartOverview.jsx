@@ -76,9 +76,10 @@ export default function AppPieChartOverview({ chartConfig, chartData, totalExpen
         </div>
       )}
 
-      <p className="justify-self-center text-sm mt-8 mb-4">
-        {m["app.expenseChart"]()}
+      <p className="justify-self-center text-2xl font-semibold mt-8 mb-4">
+        {m["app.expenseChartCurrentMonth"]()}
       </p>
+
     </Card>
   )
 }

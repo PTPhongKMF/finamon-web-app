@@ -38,7 +38,8 @@
     "createdAt": "Tạo lúc",
     "updatedAt": "Cập nhật lúc",
     "spent": "Đã tiêu",
-    "age": "Tuổi"
+    "age": "Tuổi",
+    "to": "đến"
   },
   "auth": {
     "email": "Email",
@@ -51,6 +52,8 @@
     "personalInfo": "Thông tin cá nhân",
     "security": "Bảo mật",
     "subscription": "Gói đăng kí",
+    "currentSubscription": "Gói đăng kí hiện tại",
+    "subscriptionHistory": "Lịch sử đăng kí",
     "changePassword": "Đổi mật khẩu",
     "oldPassword": "Mật khẩu cũ",
     "newPassword": "Mật khẩu mới",
@@ -65,7 +68,7 @@
     "overview": "Tổng Quan",
     "expenses": "Chi Tiêu",
     "expenseReport": "Báo cáo chi tiêu",
-    "expenseChart": "Biểu đồ chi tiêu",
+    "expenseChartCurrentMonth": "Biểu đồ chi tiêu tháng hiện tại",
     "generateReport": "Xuất báo cáo",
     "clearReport": "Xóa báo cáo",
     "category": "Danh mục",
@@ -75,10 +78,61 @@
     "addCategory": "Thêm danh mục",
     "toExpenseDetails": "Đến chi tiết ghi chép",
     "selectYear": "Chọn năm",
+    "areYouSureWantToDeleteExpense": "Bạn có chắc chắn muốn xóa chi tiêu này",
     "areYouSureWantToDeleteCategory": "Bạn có chắc chắn muốn xóa danh mục",
     "AI": {
       "chatWithAI": "Chat với AI",
       "askMeAnything": "Hỏi mình bất cứ điều gì..."
+    },
+    "alert": {
+      "headsup": "Chú ý!",
+      "reportFreeSubscription": "Gói miễn phí sẽ không lưu trữ báo cáo chi tiêu trên server của chúng tôi"
+    },
+    "categoryChart6MonthsOfEachCategory": "Biểu đồ chi tiêu 6 tháng gần nhất của từng danh mục"
+  },
+  "feature": {
+    "title": "Tại sao chọn Finamon?",
+    "subtitle": "Trợ lý Tài chính được hỗ trợ bởi AI",
+    "crossPlatform": {
+      "title": "Đa nền tảng",
+      "description": "Truy cập tài chính của bạn mọi lúc, mọi nơi - web hoặc di động, online hoặc offline"
+    },
+    "expenseTracking": {
+      "title": "Theo dõi Chi tiêu Thông minh",
+      "description": "Tổ chức và phân loại chi tiêu của bạn một cách dễ dàng"
+    },
+    "overview": {
+      "title": "Tổng quan Chi tiết",
+      "description": "Có cái nhìn rõ ràng về mô hình chi tiêu hàng tháng của bạn"
+    },
+    "budgetAlerts": {
+      "title": "Cảnh báo Ngân sách",
+      "description": "Đặt giới hạn chi tiêu cho ngân sách tổng thể hoặc danh mục cụ thể"
+    },
+    "offlineSupport": {
+      "title": "Hỗ trợ Offline",
+      "description": "Tiếp tục theo dõi chi tiêu ngay cả khi không có kết nối internet"
+    },
+    "aiAssistant": {
+      "title": "Trợ lý Tài chính AI",
+      "description": "Nhận tư vấn tài chính cá nhân và trợ giúp theo dõi chi tiêu"
+    },
+    "voiceNotes": {
+      "title": "Ghi chú Giọng nói",
+      "description": "Để AI chuyển đổi ghi chú chi tiêu của bạn thông qua chat"
+    },
+    "smartShopping": {
+      "title": "Đề xuất Mua sắm Thông minh",
+      "description": "Tìm các ưu đãi tốt hơn dựa trên mô hình chi tiêu của bạn"
+    },
+    "multiLanguage": {
+      "title": "Hỗ trợ Đa ngôn ngữ",
+      "description": "Có sẵn bằng tiếng Anh và tiếng Việt"
     }
+  },
+  "symbol": {
+    "billionShort": "T",
+    "millionShort": "Tr",
+    "thousandShort": "N"
   }
 }

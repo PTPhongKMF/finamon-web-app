@@ -31,6 +31,7 @@ import UserSecurity from "./pages/profile/UserSecurity";
 import UserSubscription from "./pages/profile/UserSubscription";
 import SuccessLogoutDialog from "./components/profile/SuccessLogoutDialog";
 import FloatAIChat from "./components/FloatAIChat";
+import MockFeature from "./pages/MockFeature";
 
 function App() {
   useUserActivityTracker();
@@ -51,7 +52,8 @@ function App() {
             <Route path="/blog/create" element={<BlogCreate />} />
             <Route path="/blog/edit/:id" element={<BlogEdit />} />
           </Route>
-          <Route path="/features" element={<Feature />} />
+          {/* <Route path="/features" element={<Feature />} /> */}
+          <Route path="/features" element={<MockFeature />} />
           <Route path="/pricings" element={<Pricing />} />
 
           <Route path="/login" element={<Login />} />

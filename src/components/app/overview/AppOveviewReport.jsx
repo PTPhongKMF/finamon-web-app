@@ -3,7 +3,7 @@ import { m } from "../../../i18n/paraglide/messages";
 import { Button } from "../../shadcn/button";
 import { Card } from "../../shadcn/ui/card";
 import clsx from "clsx";
-import { ListPlus, Trash2 } from "lucide-react";
+import { ListPlus, Trash2, TriangleAlert, X } from "lucide-react";
 import { ScrollArea } from "../../shadcn/scroll-area";
 import { useAppReportStore } from "../../../stores/appJournalStore";
 import { useShallow } from "zustand/shallow";
@@ -11,8 +11,17 @@ import { format } from "@formkit/tempo";
 import { kyDjango } from "../../../api/ky";
 import { generateReportMessage } from "../../../utils/aiChat";
 import ReactMarkdown from "react-markdown";
+import { Alert, AlertDescription, AlertTitle } from "../../shadcn/alert";
+import { useUserStore } from "../../../stores/userStore";
+import { useState } from "react";
 
 export default function AppOveviewReport({ chartData }) {
+  const [showReportAlert, setShowReportAlert] = useState(() => {
+    return localStorage.getItem("showReportAlert") ? false : true
+  })
+
+  const user = useUserStore(state => state.user);
+
   const { reports, setReports } = useAppReportStore(useShallow(
     state => ({
       reports: state.reports,
@@ -26,7 +35,7 @@ export default function AppOveviewReport({ chartData }) {
         json: {
           message: generateReportMessage(chartData)
         },
-        timeout: 60000
+        timeout: false
       }).json()
     },
     onSuccess: (data) => {
@@ -38,7 +47,7 @@ export default function AppOveviewReport({ chartData }) {
   })
 
   return (
-    <Card className="flex flex-col gap-2 bg-neutral-100 border-t-8 border-x-2 border-yellow-400">
+    <Card className="flex flex-col gap-2 bg-neutral-50 border-t-8 border-x-2 border-yellow-400">
 
       <div className="flex justify-between items-center px-4 py-2 shadow-sm">
         <p className="text-xl font-semibold">{m["app.expenseReport"]() + " : "}</p>
@@ -87,6 +96,23 @@ export default function AppOveviewReport({ chartData }) {
           )}
         </div>
       </ScrollArea>
+
+      {(user.subscription !== "Pro" && showReportAlert) && (
+        <Alert
+        className="rounded-none rounded-b-xl text-amber-600">
+          <TriangleAlert />
+          <AlertTitle className="flex justify-between">
+            <p>{m["app.alert.headsup"]()}</p>
+            <button className="hover:bg-black/10 cursor-pointer rounded-md" onClick={() => {setShowReportAlert(false); localStorage.setItem("showReportAlert", "1")}}>
+            <X />
+            </button>
+            </AlertTitle>
+          <AlertDescription className="text-yellow-600">
+            {m["app.alert.reportFreeSubscription"]()}
+          </AlertDescription>
+        </Alert>
+      )}
+
     </Card>
   )
 }

@@ -38,7 +38,8 @@
     "createdAt": "Created at",
     "updatedAt": "Updated at",
     "spent": "Spent",
-    "age": "Age"
+    "age": "Age",
+    "to": "to"
   },
   "auth": {
     "email": "Email",
@@ -51,6 +52,8 @@
     "personalInfo": "Personal Information",
     "security": "Security",
     "subscription": "Subscription",
+    "currentSubscription": "Current subscription",
+    "subscriptionHistory": "Subscription history",
     "changePassword": "Change password",
     "oldPassword": "Old password",
     "newPassword": "New password",
@@ -65,7 +68,7 @@
     "overview": "Overview",
     "expenses": "Expenses",
     "expenseReport": "Expense Report",
-    "expenseChart": "Expense Chart",
+    "expenseChartCurrentMonth": "Expense chart for the current month",
     "generateReport": "Generate Report",
     "clearReport": "Clear Report",
     "category": "Category",
@@ -75,10 +78,61 @@
     "addCategory": "Add Category",
     "toExpenseDetails": "To expense details",
     "selectYear": "Select Year",
+    "areYouSureWantToDeleteExpense": "Are you sure you want to delete this expense",
     "areYouSureWantToDeleteCategory": "Are you sure you want to delete this category",
     "AI": {
       "chatWithAI": "Chat with AI",
       "askMeAnything": "Ask me anything..."
+    },
+    "alert": {
+      "headsup": "Heads up!",
+      "reportFreeSubscription": "Free subscription will not save expense reports on our server"
+    },
+    "categoryChart6MonthsOfEachCategory": "Expense chart for the last 6 months of each category"
+  },
+  "feature": {
+    "title": "Why Choose Finamon?",
+    "subtitle": "Your AI-Powered Financial Assistant",
+    "crossPlatform": {
+      "title": "Cross-Platform Access",
+      "description": "Access your finances anytime, anywhere - web or mobile, online or offline"
+    },
+    "expenseTracking": {
+      "title": "Smart Expense Tracking",
+      "description": "Organize and categorize your expenses with ease"
+    },
+    "overview": {
+      "title": "Comprehensive Overview",
+      "description": "Get clear insights into your monthly spending patterns"
+    },
+    "budgetAlerts": {
+      "title": "Budget Alerts",
+      "description": "Set spending limits for overall budget or specific categories"
+    },
+    "offlineSupport": {
+      "title": "Offline Support",
+      "description": "Keep tracking expenses even without internet connection"
+    },
+    "aiAssistant": {
+      "title": "AI Financial Assistant",
+      "description": "Get personalized financial advice and expense tracking help"
+    },
+    "voiceNotes": {
+      "title": "Voice-to-Text Notes",
+      "description": "Let AI transcribe your expense notes through chat"
+    },
+    "smartShopping": {
+      "title": "Smart Shopping Suggestions",
+      "description": "Find better deals based on your spending patterns"
+    },
+    "multiLanguage": {
+      "title": "Multi-Language Support",
+      "description": "Available in English and Vietnamese"
     }
+  },
+  "symbol": {
+    "billionShort": "B",
+    "millionShort": "M",
+    "thousandShort": "K"
   }
 }

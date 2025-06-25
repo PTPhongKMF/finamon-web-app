@@ -13,7 +13,7 @@ import { kyDjango } from "../api/ky";
 import { useChatMessageStore } from "../stores/chatStore";
 import { useShallow } from "zustand/shallow";
 import ReactMarkdown from "react-markdown";
-import { generateChatMessage } from "../utils/aiChat";
+// import { generateChatMessage } from "../utils/aiChat";
 
 export default function FloatAIChat() {
   const [animate, setAnimate] = useState(() => {
@@ -43,7 +43,8 @@ export default function FloatAIChat() {
       return await kyDjango.post("api/chat/", {
         json: {
           message: messageToSend //generateChatMessage(messageToSend)
-        }
+        },
+        timeout: false
       }).json()
     },
     onSuccess: (data) => {

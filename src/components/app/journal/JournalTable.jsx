@@ -9,8 +9,14 @@ import { useUserStore } from "../../../stores/userStore";
 import { useAppDateStore, useAppTableStore } from "../../../stores/appJournalStore";
 import { useShallow } from "zustand/shallow";
 import clsx from "clsx";
+import { useState } from "react";
+import { formatVND } from "../../../utils/formatter";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "../../shadcn/alert-dialog";
 
 export default function JournalTable() {
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [selectedExpense, setSelectedExpense] = useState({})
+
   const user = useUserStore(state => state.user);
   const selectedMonthYear = useAppDateStore(state => state.selectedMonthYear);
 
@@ -98,20 +104,24 @@ export default function JournalTable() {
                   </TableCell>
                   <TableCell className="text-right">{format(expense.date, "DD/MM/YYYY, HH:mm:ss")}</TableCell>
                   <TableCell>
-                    <DropdownMenu>
+                    <DropdownMenu modal={false}>
                       <DropdownMenuTrigger asChild>
                         <button className="h-8 w-8 p-0 flex justify-center items-center rounded-full hover:bg-amber-200 cursor-pointer">
                           <MoreHorizontal className="size-6 text-blue-500" />
                         </button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" className="min-w-20">
-                        <DropdownMenuItem
+                        <DropdownMenuItem className="cursor-pointer"
                           onClick={() => navigator.clipboard.writeText(expense.id)}
                         >
                           {m["common.edit"]()}
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="text-red-500"
-                          onClick={() => deleteExpense.mutate(expense.id)}>
+                        <DropdownMenuItem className="text-red-500 cursor-pointer"
+                          onClick={() => {setSelectedExpense({
+                            id: expense.id,
+                            name: expense.name,
+                            amount: formatVND(parseInt(expense.amount))
+                          }); setShowDeleteDialog(true)}}>
                           {m["common.delete"]()}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
@@ -129,6 +139,27 @@ export default function JournalTable() {
           </TableBody>
         </Table>
       </div>
+
+      <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{m["common.areYouSure?"]()}</AlertDialogTitle>
+            <AlertDialogDescription>
+              {m["app.areYouSureWantToDeleteExpense"]()
+                + ":"}
+              <p className="text-lg font-bold text-black">{selectedExpense.name}</p>
+              <p className="text-sm text-black">{selectedExpense.amount}</p>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel className="cursor-pointer">{m["common.cancel"]()}</AlertDialogCancel>
+            <AlertDialogAction className="bg-red-500 hover:bg-red-600 cursor-pointer"
+              onClick={() => {deleteExpense.mutate(selectedExpense.id)}}>
+              {m["common.confirm"]()}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   )
 }

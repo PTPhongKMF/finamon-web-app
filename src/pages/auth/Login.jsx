@@ -35,6 +35,7 @@ function Login() {
             const userRoles = data?.data?.user?.userRoles?.map(role => role.roleName) || [];
             setUser({
                 id: data?.data?.user?.id,
+                subscription: data?.data?.user?.membership || "Free",
                 email: data?.data?.user?.email,
                 name: data?.data?.user?.userName || "",
                 age: data?.data?.user?.age || 0,
