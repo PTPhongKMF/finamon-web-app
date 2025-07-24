@@ -7,16 +7,22 @@ function ProtectedRoute(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(user.roles);
-    if (user) {
-      const isAllowed = props.allowedRoles.some(role =>
-        user.roles.some(userRole => userRole === role)
-      );
-      if (!isAllowed) navigate("/login")
-    } else {
-      navigate("/login")
+    if (!user) {
+      navigate("/login");
+      return;
     }
-  }, [user, navigate, props.allowedRoles])
+
+    const isAllowed = props.allowedRoles.some(role =>
+      user.roles?.some(userRole => userRole === role)
+    );
+    
+    if (!isAllowed) {
+      navigate("/login");
+    }
+  }, [user, navigate, props.allowedRoles]);
+
+  // Don't render anything if user is not authenticated
+  if (!user) return null;
 
   return <Outlet/>;
 }

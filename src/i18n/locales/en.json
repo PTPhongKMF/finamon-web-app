@@ -15,7 +15,8 @@
       "expenseBook": "Expense Book",
       "toExpenseManagement": "To expense book",
       "account": "Account",
-      "logout": "Logout"
+      "logout": "Logout",
+      "download": "Download"
     },
     "areYouSure?": "Are you sure?",
     "error": "Error",
@@ -130,9 +131,117 @@
       "description": "Available in English and Vietnamese"
     }
   },
+  "download": {
+    "subtitle": "Choose your preferred platform and start managing your finances with Finamon today",
+    "stats": {
+      "downloads": "Downloads",
+      "accountsCreated": "Accounts Created",
+      "siteVisits": "Site Visits"
+    },
+    "platforms": {
+      "web": {
+        "title": "Web Version",
+        "subtitle": "Access via Browser"
+      },
+      "ios": {
+        "title": "iOS",
+        "subtitle": "Coming Soon"
+      },
+      "android": {
+        "title": "Android",
+        "subtitle": "Download APK"
+      }
+    }
+  },
+  "pricing": {
+    "hero": {
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "We always strive to provide the best value for your financial journey"
+    },
+    "plans": {
+      "free": {
+        "title": "Free",
+        "subtitle": "Perfect for getting started",
+        "price": "Free",
+        "features": {
+          "profile": "Edit Personal Profile",
+          "aiChat": "AI Chatbot (Limited)",
+          "expenses": "Unlimited Expenses & Categories",
+          "more": "And many more features coming soon"
+        }
+      },
+      "pro": {
+        "title": "Pro",
+        "subtitle": "For serious finance tracking",
+        "price": {
+          "monthly": "19,000 VND/month",
+          "yearly": "200,000 VND/year",
+          "yearlyBadge": "Best Value"
+        },
+        "features": {
+          "allFree": "All Free plan features",
+          "storage": "Store expense images (Coming Soon)",
+          "aiChat": "Unlimited AI Chatbot",
+          "budget": "Budget Limits (Coming Soon)",
+          "more": "And many more features coming soon"
+        }
+      }
+    },
+    "cta": "Sign up and choose your subscription"
+  },
   "symbol": {
     "billionShort": "B",
     "millionShort": "M",
     "thousandShort": "K"
+  },
+  "home": {
+    "hero": {
+      "title": "Easy Personal Expense Management with AI Assistance",
+      "subtitle": "An app that helps you control finances, save and invest effectively.",
+      "cta": {
+        "getStarted": "Get Started",
+        "download": "Download Now"
+      }
+    },
+    "whyChoose": {
+      "title": "Why should you choose FINAMON's app?",
+      "viewPricing": "View Our Pricing",
+      "reasons": {
+        "easyToUse": {
+          "title": "Easy to use and intuitive",
+          "description": "User-friendly interface helps you record expenses in seconds without special skills."
+        },
+        "smartAnalysis": {
+          "title": "Smart Analysis",
+          "description": "Reports and charts help you understand spending trends and make rational financial decisions."
+        },
+        "crossDevice": {
+          "title": "Cross-device sync",
+          "description": "Data is securely stored in the cloud and synced across all your devices."
+        }
+      }
+    },
+    "features": {
+      "title": "Key Features",
+      "viewMore": "View More Features",
+      "items": {
+        "expenseTracking": {
+          "title": "Expense Tracking",
+          "description": "Track daily income and expenses in detail and scientifically."
+        },
+        "financialPlanning": {
+          "title": "Financial Planning",
+          "description": "Set savings goals and track progress easily."
+        },
+        "visualReports": {
+          "title": "Visual Reports",
+          "description": "Dynamic charts help you understand your financial situation."
+        }
+      }
+    },
+    "reviews": {
+      "title": "User Reviews",
+      "viewNews": "Read Our Latest News"
+    }
   }
 }

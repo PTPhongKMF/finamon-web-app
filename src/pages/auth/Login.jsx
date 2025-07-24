@@ -4,6 +4,7 @@ import { kyAspDotnet } from "../../api/ky";
 import { useMutation } from "@tanstack/react-query";
 import Cookies from "js-cookie";
 import { useUserStore } from "../../stores/userStore";
+import { MousePointer2 } from "lucide-react";
 
 function Login() {
     const setUser = useUserStore(state => state.setUser);
@@ -11,6 +12,7 @@ function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isVerificationError, setIsVerificationError] = useState(false);
 
     const doLogin = useMutation({
         mutationFn: async () => {
@@ -18,18 +20,24 @@ function Login() {
                 json: {
                     email,
                     password
+                },
+                hooks: {
+                    beforeError: [
+                        async error => {
+                            const errorData = await error.response.json();
+                            error.message = errorData.message;
+                            setIsVerificationError(errorData.requiresVerification === true);
+                            return error;
+                        }
+                    ]
                 }
             }).json();
         },
         onSuccess: (data) => {
             console.log(data);
+            setIsVerificationError(false);
 
             if (data.isBanned) throw new Error("Bạn đã bị cấm, liên hệ hỗ trợ nếu bạn nghĩ đây là sai lầm");
-
-            if (data.requiresVerification) {
-                navigate("/verify-account", { state: { email: email } });
-                return;
-            }
 
             Cookies.set("token", data.data.token, { expires: 2 });
             const userRoles = data?.data?.user?.userRoles?.map(role => role.roleName) || [];
@@ -63,6 +71,10 @@ function Login() {
         e.preventDefault();
         doLogin.mutate();
     };
+
+    function handleVerify() {
+        navigate("/verify-account", { state: { email: email } });
+    }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-[url(/images/login_bg.webp)] bg-cover">
@@ -101,15 +113,27 @@ function Login() {
                     />
 
                     {doLogin.isError && (
-                        <div className="text-red-500 text-sm font-medium mt-2">
-                            {"Lỗi: " + doLogin.error?.message}
+                        <div className="space-y-2">
+                            <div className="text-red-500 text-sm font-medium">
+                                {"Lỗi: " + doLogin.error?.message}
+                            </div>
+                            {isVerificationError && (
+                                <button
+                                    type="button"
+                                    onClick={handleVerify}
+                                    className="text-green-600 text-sm hover:underline cursor-pointer flex gap-2 justify-center items-center"
+                                >
+                                    <MousePointer2/>
+                                    Xác thực tài khoản của bạn
+                                </button>
+                            )}
                         </div>
                     )}
 
                     <button
                         type="submit"
                         disabled={doLogin.isPending}
-                        className="mt-12 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium cursor-pointer rounded-md text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-yellow-600 disabled:cursor-not-allowed"
+                        className="mt-6 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium cursor-pointer rounded-md text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-yellow-600 disabled:cursor-not-allowed"
                     >
                         {doLogin.isPending ? "Đang đăng nhập..." : "Đăng nhập"}
                     </button>

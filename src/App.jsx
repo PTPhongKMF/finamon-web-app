@@ -26,7 +26,7 @@ import Test from "./pages/Test";
 import AppBudget from "./pages/app/AppBudget";
 import AppLayout from "./components/app/AppLayout";
 import FloatScrollToTop from "./components/FloatScrollToTop";
-import useUserActivityTracker from "./utils/analytic";
+import useUserActivityTracker from "./hooks/analytic";
 import UserSecurity from "./pages/profile/UserSecurity";
 import UserSubscription from "./pages/profile/UserSubscription";
 import SuccessLogoutDialog from "./components/profile/SuccessLogoutDialog";
@@ -34,9 +34,12 @@ import FloatAIChat from "./components/FloatAIChat";
 import MockFeature from "./pages/MockFeature";
 import MockBlog from "./pages/blog/MockBlog";
 import MockBlogDetail from "./pages/blog/MockBlogDetail";
+import Download from "./pages/Download";
+import useTrackVisit from "./hooks/useTrackVisit";
 
 function App() {
   useUserActivityTracker();
+  useTrackVisit();
 
   return (
     <>
@@ -50,6 +53,7 @@ function App() {
           <Route path="/blog" element={<MockBlog />} />
           <Route path="/blog/:slug" element={<MockBlogDetail />} />
           <Route path="/blogs" element={<MockBlog />} />
+          <Route path="/download" element={<Download />} />
 
           {/* Protected blog routes - require login */}
           <Route element={<ProtectedRoute allowedRoles={["User", "Staff", "Admin"]} />}>

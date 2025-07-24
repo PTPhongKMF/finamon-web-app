@@ -77,7 +77,7 @@ function TopNavBar() {
           {(isAppRoute || isDashboardRoute) ? (
             <div></div>
           ) : (
-            <nav className="justify-self-center flex justify-center gap-10 text-gray-600 font-semibold text-lg">
+            <nav className="justify-self-center flex justify-center gap-7 text-gray-600 font-semibold text-lg">
               <Link to="/"
                 className={`${pathname === "/" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
               >
@@ -97,6 +97,11 @@ function TopNavBar() {
                 className={`${pathname === "/blogs" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
               >
                 {m["common.topnavbar.blog"]()}
+              </Link>
+              <Link to="/download"
+                className={`${pathname === "/download" ? "text-blue-600 border-b-2 border-blue-600" : ""} hover:text-blue-600`}
+              >
+                {m["common.topnavbar.download"]()}
               </Link>
             </nav>
           )}

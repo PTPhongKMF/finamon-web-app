@@ -15,7 +15,8 @@
       "expenseBook": "Sổ chi tiêu",
       "toExpenseManagement": "Đến sổ chi tiêu",
       "account": "Tài Khoản",
-      "logout": "Đăng Xuất"
+      "logout": "Đăng Xuất",
+      "download": "Tải Xuống"
     },
     "areYouSure?": "Bạn có chắc chắn?",
     "error": "Lỗi",
@@ -130,9 +131,117 @@
       "description": "Có sẵn bằng tiếng Anh và tiếng Việt"
     }
   },
+  "pricing": {
+    "hero": {
+      "title": "Bảng Giá Đơn Giản, Minh Bạch",
+      "subtitle": "Chúng tôi luôn cố gắng mang đến giá trị tốt nhất cho hành trình tài chính của bạn"
+    },
+    "plans": {
+      "free": {
+        "title": "Miễn Phí",
+        "subtitle": "Hoàn hảo để bắt đầu",
+        "price": "Miễn Phí",
+        "features": {
+          "profile": "Chỉnh sửa thông tin cá nhân",
+          "aiChat": "Trò chuyện với AI (Giới hạn)",
+          "expenses": "Không giới hạn chi tiêu & danh mục",
+          "more": "Và nhiều tính năng sắp ra mắt"
+        }
+      },
+      "pro": {
+        "title": "Pro",
+        "subtitle": "Cho việc theo dõi tài chính chuyên nghiệp",
+        "price": {
+          "monthly": "19.000 VND/tháng",
+          "yearly": "200.000 VND/năm",
+          "yearlyBadge": "Giá Trị Nhất"
+        },
+        "features": {
+          "allFree": "Tất cả tính năng của gói Miễn Phí",
+          "storage": "Lưu trữ hình ảnh chi tiêu (Sắp Ra Mắt)",
+          "aiChat": "Trò chuyện với AI không giới hạn",
+          "budget": "Giới hạn ngân sách (Sắp Ra Mắt)",
+          "more": "Và nhiều tính năng sắp ra mắt"
+        }
+      }
+    },
+    "cta": "Đăng ký và chọn gói dịch vụ"
+  },
+  "download": {
+    "subtitle": "Chọn nền tảng phù hợp và bắt đầu quản lý tài chính của bạn với Finamon ngay hôm nay",
+    "stats": {
+      "downloads": "Lượt Tải",
+      "accountsCreated": "Tài Khoản Đã Tạo",
+      "siteVisits": "Lượt Truy Cập"
+    },
+    "platforms": {
+      "web": {
+        "title": "Phiên Bản Web",
+        "subtitle": "Truy cập qua Trình duyệt"
+      },
+      "ios": {
+        "title": "iOS",
+        "subtitle": "Sắp Ra Mắt"
+      },
+      "android": {
+        "title": "Android",
+        "subtitle": "Tải APK"
+      }
+    }
+  },
   "symbol": {
     "billionShort": "T",
     "millionShort": "Tr",
     "thousandShort": "N"
+  },
+  "home": {
+    "hero": {
+      "title": "Quản lý chi tiêu cá nhân dễ dàng với sự trợ giúp của AI",
+      "subtitle": "Ứng dụng giúp bạn kiểm soát tài chính, tiết kiệm và đầu tư hiệu quả.",
+      "cta": {
+        "getStarted": "Bắt đầu ngay",
+        "download": "Tải xuống ngay"
+      }
+    },
+    "whyChoose": {
+      "title": "Tại sao bạn nên chọn sử dụng ứng dụng của FINAMON?",
+      "viewPricing": "Xem bảng giá",
+      "reasons": {
+        "easyToUse": {
+          "title": "Dễ sử dụng và trực quan",
+          "description": "Giao diện thân thiện giúp bạn ghi chép chi tiêu chỉ trong vài giây mà không cần kỹ năng đặc biệt."
+        },
+        "smartAnalysis": {
+          "title": "Phân tích thông minh",
+          "description": "Hệ thống báo cáo và biểu đồ giúp bạn hiểu rõ xu hướng chi tiêu và đưa ra quyết định tài chính hợp lý."
+        },
+        "crossDevice": {
+          "title": "Đồng bộ đa thiết bị",
+          "description": "Dữ liệu được lưu trữ an toàn trên đám mây và đồng bộ trên mọi thiết bị của bạn."
+        }
+      }
+    },
+    "features": {
+      "title": "Tính năng nổi bật",
+      "viewMore": "Xem thêm tính năng",
+      "items": {
+        "expenseTracking": {
+          "title": "Ghi chép chi tiêu",
+          "description": "Theo dõi thu chi hàng ngày một cách chi tiết và khoa học."
+        },
+        "financialPlanning": {
+          "title": "Lập kế hoạch tài chính",
+          "description": "Đặt mục tiêu tiết kiệm và theo dõi tiến độ dễ dàng."
+        },
+        "visualReports": {
+          "title": "Báo cáo trực quan",
+          "description": "Biểu đồ sinh động giúp bạn hiểu rõ tình hình tài chính."
+        }
+      }
+    },
+    "reviews": {
+      "title": "Đánh giá từ người dùng",
+      "viewNews": "Đọc tin tức mới nhất"
+    }
   }
 }

@@ -13,9 +13,8 @@ function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Theo Dõi</h3>
             <ul className="text-gray-300">
-              <li>Facebook</li>
-              <li>Twitter</li>
-              <li>Instagram</li>
+              <li><a href="https://www.facebook.com/profile.php?id=61576627709105" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+              <li><a href="https://www.youtube.com/@Finamon-x8n" target="_blank" rel="noopener noreferrer">Youtube</a></li>
             </ul>
           </div>
 

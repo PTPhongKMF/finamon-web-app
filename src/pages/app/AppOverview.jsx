@@ -13,15 +13,17 @@ function AppOverview() {
   const selectedMonthYear = useAppDateStore(state => state.selectedMonthYear);
 
   const fetchCategories = useQuery({
-    queryKey: ["all_category", user.id],
+    queryKey: ["all_category", user?.id],
     queryFn: async () => {
+      if (!user?.id) return { items: [] };
       return await kyAspDotnet.get(`api/category/user/${user.id}`, {
         searchParams: {
           pageNumber: 1,
           pageSize: 1000
         }
       }).json();
-    }
+    },
+    enabled: !!user?.id // Only run query if user.id exists
   })
 
   const appPieChartConfig = useMemo(() => {
