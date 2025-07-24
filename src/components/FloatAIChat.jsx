@@ -13,6 +13,7 @@ import { kyDjango } from "../api/ky";
 import { useChatMessageStore } from "../stores/chatStore";
 import { useShallow } from "zustand/shallow";
 import ReactMarkdown from "react-markdown";
+import FinamonLogo from "../assets/finamon.svg?react"
 // import { generateChatMessage } from "../utils/aiChat";
 
 export default function FloatAIChat() {
@@ -86,7 +87,7 @@ export default function FloatAIChat() {
               "relative size-fit rounded-full p-2 shadow-lg bg-white hover:bg-green-100 border-3 border-green-700",
               animate && "animate-double-spin"
             )}>
-              <img src="logo/finamon.svg"
+              <FinamonLogo
                 className="size-8" />
             </div>
           </div>
