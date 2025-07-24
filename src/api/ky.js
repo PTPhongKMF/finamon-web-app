@@ -8,7 +8,7 @@ const KyDjango_LOCAL = "http://localhost:8000/";
 const KyDjango_WEB = "";
 
 export const kyAspDotnet = ky.extend({
-  prefixUrl: KyAspDotnet_LOCAL, 
+  prefixUrl: KyAspDotnet_WEB, 
   hooks: {
     beforeRequest: [
       request => {
