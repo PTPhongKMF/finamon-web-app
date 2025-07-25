@@ -39,7 +39,7 @@ function Login() {
 
             if (data.isBanned) throw new Error("Bạn đã bị cấm, liên hệ hỗ trợ nếu bạn nghĩ đây là sai lầm");
 
-            Cookies.set("token", data.data.token, { expires: 2 });
+            Cookies.set("token", data.data.token, { expires: 1 });
             const userRoles = data?.data?.user?.userRoles?.map(role => role.roleName) || [];
             setUser({
                 id: data?.data?.user?.id,

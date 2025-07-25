@@ -161,8 +161,8 @@ export default function AddExpense() {
                 </section>
 
                 <div className="grid w-full items-center gap-2">
-                  <label htmlFor="amount">{m["common.note"]()}</label>
-                  <Textarea placeholder={m["common.enterNoteHere"]()}
+                  <label htmlFor="note">{m["common.note"]()}</label>
+                  <Textarea id="note" placeholder={m["common.enterNoteHere"]()}
                     value={addForm.note} onChange={(e) => setAddForm({ ...addForm, note: e.target.value })} />
                 </div>
               </section>
