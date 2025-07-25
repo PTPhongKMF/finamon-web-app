@@ -125,7 +125,7 @@ export default function Download() {
 
           {/* Android Version */}
           <a
-            href="/files/finamon.apk"
+            href="https://drive.google.com/uc?export=download&id=1chBEjJvICUSa_J4j6SLIvO9yXlcaHulg"
             download="finamon.apk"
             onClick={handleAndroidDownload}
             className="bg-green-600 hover:bg-green-700 text-white p-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 no-underline"
