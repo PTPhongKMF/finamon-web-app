@@ -40,7 +40,8 @@
     "updatedAt": "Updated at",
     "spent": "Spent",
     "age": "Age",
-    "to": "to"
+    "to": "to",
+    "status": "Status"
   },
   "auth": {
     "email": "Email",
@@ -55,6 +56,7 @@
     "subscription": "Subscription",
     "currentSubscription": "Current subscription",
     "subscriptionHistory": "Subscription history",
+    "buySubscription": "Buy Subscription",
     "changePassword": "Change password",
     "oldPassword": "Old password",
     "newPassword": "New password",
@@ -62,7 +64,10 @@
     "successPasswordChangeText": "Password changed successfully, please log in again!",
     "alert": {
       "imgOverSizeLimit": "Image size exceeds 2MB limit",
-      "ageIsInvalid": "Age is invalid, must be larger than 0"
+      "ageIsInvalid": "Age is invalid, must be larger than 0",
+      "hasUnpaidReceipt": "You have an unpaid subscription. Please complete the payment before purchasing a new one.",
+      "alreadyHaveSubscription": "You already have this subscription plan.",
+      "currentPlan": "Current Plan"
     }
   },
   "app": {
@@ -193,7 +198,9 @@
   "symbol": {
     "billionShort": "B",
     "millionShort": "M",
-    "thousandShort": "K"
+    "thousandShort": "K",
+    "perMonth": "/month",
+    "perYear": "/year"
   },
   "home": {
     "hero": {

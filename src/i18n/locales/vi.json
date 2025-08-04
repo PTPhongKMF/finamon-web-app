@@ -40,7 +40,8 @@
     "updatedAt": "Cập nhật lúc",
     "spent": "Đã tiêu",
     "age": "Tuổi",
-    "to": "đến"
+    "to": "đến",
+    "status": "Trạng thái"
   },
   "auth": {
     "email": "Email",
@@ -55,6 +56,7 @@
     "subscription": "Gói đăng kí",
     "currentSubscription": "Gói đăng kí hiện tại",
     "subscriptionHistory": "Lịch sử đăng kí",
+    "buySubscription": "Mua Gói Đăng Kí",
     "changePassword": "Đổi mật khẩu",
     "oldPassword": "Mật khẩu cũ",
     "newPassword": "Mật khẩu mới",
@@ -62,7 +64,10 @@
     "successPasswordChangeText": "Đổi mật khẩu thành công, vui lòng đăng nhập lại!",
     "alert": {
       "imgOverSizeLimit": "Dung lượng ảnh vượt 2MB",
-      "ageIsInvalid": "Tuổi không hợp lệ, phải lớn hơn 0"
+      "ageIsInvalid": "Tuổi không hợp lệ, phải lớn hơn 0",
+      "hasUnpaidReceipt": "Bạn có một gói đăng kí chưa thanh toán. Vui lòng hoàn tất thanh toán trước khi mua gói mới.",
+      "alreadyHaveSubscription": "Bạn đã có gói đăng kí này.",
+      "currentPlan": "Gói Hiện Tại"
     }
   },
   "app": {
@@ -193,7 +198,9 @@
   "symbol": {
     "billionShort": "T",
     "millionShort": "Tr",
-    "thousandShort": "N"
+    "thousandShort": "N",
+    "perMonth": "/tháng",
+    "perYear": "/năm"
   },
   "home": {
     "hero": {
