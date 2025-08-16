@@ -37,7 +37,7 @@ function LeftSideBar() {
         <Link
           to={"/dashboard/staff"}
           className={`text-lg rounded-r-md py-1 px-2 border-l-4 ${pathname === "/dashboard/staff" ? "border-blue-600 bg-gray-100" : "border-transparent"}`}>
-          Tổng Quan
+          Gói đăng ký
         </Link>
 
         <Link

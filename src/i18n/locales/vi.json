@@ -41,7 +41,14 @@
     "spent": "Đã tiêu",
     "age": "Tuổi",
     "to": "đến",
-    "status": "Trạng thái"
+    "status": "Trạng thái",
+    "statusValues": {
+      "paid": "Đã thanh toán",
+      "unpaid": "Chưa thanh toán"
+    },
+    "id": "ID",
+    "userId": "ID người dùng",
+    "membershipId": "ID gói"
   },
   "auth": {
     "email": "Email",
@@ -68,6 +75,17 @@
       "hasUnpaidReceipt": "Bạn có một gói đăng kí chưa thanh toán. Vui lòng hoàn tất thanh toán trước khi mua gói mới.",
       "alreadyHaveSubscription": "Bạn đã có gói đăng kí này.",
       "currentPlan": "Gói Hiện Tại"
+    },
+    "paymentGuide": {
+      "title": "Cách thanh toán",
+      "steps": {
+        "chooseAndConfirm": "Chọn gói đăng kí và xác nhận mua.",
+        "refreshAndFindReceiptId": "Làm mới trang và sao chép mã hóa đơn từ lịch sử hóa đơn bên trên.",
+        "transferByQrWithContent": "Chuyển khoản bằng cách quét một trong các mã QR bên dưới. Trong nội dung chuyển khoản, ghi mã hóa đơn của bạn."
+      },
+      "notice": "Nếu gặp lỗi hoặc không nhận được gói sau khi thanh toán, vui lòng liên hệ bộ phận hỗ trợ của chúng tôi.",
+      "qrTitle": "Mã QR thanh toán",
+      "noQrPlaceholder": "Hình ảnh QR sẽ hiển thị tại đây."
     }
   },
   "app": {

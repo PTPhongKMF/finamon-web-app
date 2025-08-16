@@ -41,7 +41,14 @@
     "spent": "Spent",
     "age": "Age",
     "to": "to",
-    "status": "Status"
+    "status": "Status",
+    "statusValues": {
+      "paid": "Paid",
+      "unpaid": "Unpaid"
+    },
+    "id": "ID",
+    "userId": "User ID",
+    "membershipId": "Membership ID"
   },
   "auth": {
     "email": "Email",
@@ -68,6 +75,17 @@
       "hasUnpaidReceipt": "You have an unpaid subscription. Please complete the payment before purchasing a new one.",
       "alreadyHaveSubscription": "You already have this subscription plan.",
       "currentPlan": "Current Plan"
+    },
+    "paymentGuide": {
+      "title": "How to pay",
+      "steps": {
+        "chooseAndConfirm": "Choose a subscription plan and confirm your purchase.",
+        "refreshAndFindReceiptId": "Refresh the page and copy your receipt ID from the receipt history above.",
+        "transferByQrWithContent": "Transfer the amount by scanning one of the QR codes below. In the transfer note/content, write your receipt ID."
+      },
+      "notice": "If you encounter any errors or do not receive your subscription after payment, please contact our support.",
+      "qrTitle": "Payment QR codes",
+      "noQrPlaceholder": "QR images will be shown here."
     }
   },
   "app": {

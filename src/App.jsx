@@ -16,7 +16,7 @@ import ProtectedRoute from "./components/wrapper/ProtectedRoute";
 import { Component } from "./pages/app/testOverview";
 import VerifyAccount from "./pages/auth/VerifyAccount";
 import DashboardLayout from "./components/wrapper/DashboardLayout";
-import StaffDbOverview from "./pages/dashboard/staff/StaffDbOverview";
+import StaffSubscription from "./pages/dashboard/staff/StaffSubscription";
 import StaffDbBlog from "./pages/dashboard/staff/StaffDbBlog";
 import ScrollToTop from "./components/ScrollToTop";
 import ProfileLayout from "./components/profile/ProfileLayout";
@@ -90,7 +90,7 @@ function App() {
 
           <Route element={<ProtectedRoute allowedRoles={["Staff", "Admin"]} />}>
             <Route path="/dashboard/staff" element={<DashboardLayout />}>
-              <Route index element={<StaffDbOverview />} />
+              <Route index element={<StaffSubscription />} />
               <Route path="blogs" element={<StaffDbBlog />} />
             </Route>
           </Route>

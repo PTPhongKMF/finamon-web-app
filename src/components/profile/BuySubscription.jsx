@@ -10,6 +10,7 @@ import { Alert, AlertDescription } from "../shadcn/alert";
 import { cn } from "../../lib/utils";
 import { useState } from "react";
 import { Textarea } from "../shadcn/textarea";
+import { Dialog, DialogContent } from "../shadcn/dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -26,6 +27,8 @@ export default function BuySubscription() {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [note, setNote] = useState("");
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const paymentQrImageUrls = ["/images/QR/PVCB.jfif"];
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   const receiptHistoryQuery = useQuery({
     queryKey: ["receiptHistory", user.id],
@@ -203,6 +206,54 @@ export default function BuySubscription() {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
+
+        <div className="space-y-4">
+          <Separator />
+          <div className="space-y-3">
+            <h3 className="text-lg font-semibold">{m["profile.paymentGuide.title"]()}</h3>
+            <ol className="list-decimal pl-5 space-y-2 text-sm text-gray-700">
+              <li>{m["profile.paymentGuide.steps.chooseAndConfirm"]()}</li>
+              <li>{m["profile.paymentGuide.steps.refreshAndFindReceiptId"]()}</li>
+              <li>{m["profile.paymentGuide.steps.transferByQrWithContent"]()}</li>
+            </ol>
+            <Alert className="border-yellow-500 bg-yellow-50 text-yellow-800">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>
+                {m["profile.paymentGuide.notice"]()}
+              </AlertDescription>
+            </Alert>
+            <div className="mt-2">
+              <h4 className="text-sm font-medium mb-2">{m["profile.paymentGuide.qrTitle"]()}</h4>
+              <div className="flex flex-wrap gap-4">
+                {paymentQrImageUrls.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">{m["profile.paymentGuide.noQrPlaceholder"]()}</p>
+                ) : (
+                  paymentQrImageUrls.map((url, idx) => (
+                    <img
+                      key={idx}
+                      src={url}
+                      alt={`QR ${idx + 1}`}
+                      className="h-44 w-44 object-contain rounded border cursor-pointer transition hover:opacity-90"
+                      onClick={() => setPreviewUrl(url)}
+                    />
+                  ))
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <Dialog open={!!previewUrl} onOpenChange={(open) => { if (!open) setPreviewUrl(null) }}>
+          <DialogContent className="p-0 border-0 bg-transparent shadow-none w-auto max-w-none sm:max-w-none place-items-center">
+            {previewUrl && (
+              <img
+                src={previewUrl}
+                alt="QR preview"
+                className="max-h-[85vh] max-w-[95vw] object-contain rounded"
+              />
+            )}
+          </DialogContent>
+        </Dialog>
 
       </CardContent>
     </Card>
