@@ -23,7 +23,7 @@ export const kyAspDotnet = ky.extend({
 });
 
 export const kyDjango = ky.extend({
-  prefixUrl: KyDjango_WEB, 
+  prefixUrl: KyDjango_LOCAL, 
   hooks: {
     beforeRequest: [
       request => {
