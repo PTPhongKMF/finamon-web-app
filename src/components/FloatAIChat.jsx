@@ -45,7 +45,16 @@ export default function FloatAIChat() {
         json: {
           message: messageToSend //generateChatMessage(messageToSend)
         },
-        timeout: false
+        timeout: false,
+        hooks: {
+          beforeError: [
+            async error => {
+              console.log(error.message);
+
+              return error;
+            }
+          ]
+        }
       }).json()
     },
     onSuccess: (data) => {

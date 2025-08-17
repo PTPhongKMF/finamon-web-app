@@ -5,7 +5,7 @@ const KyAspDotnet_LOCAL = "http://localhost:5296/";
 const KyAspDotnet_WEB = "https://finamon.runasp.net/";
 
 const KyDjango_LOCAL = "http://localhost:8000/";
-const KyDjango_WEB = "";
+const KyDjango_WEB = "https://rosswall.pythonanywhere.com/";
 
 export const kyAspDotnet = ky.extend({
   prefixUrl: KyAspDotnet_WEB, 
@@ -23,7 +23,7 @@ export const kyAspDotnet = ky.extend({
 });
 
 export const kyDjango = ky.extend({
-  prefixUrl: KyDjango_LOCAL, 
+  prefixUrl: KyDjango_WEB, 
   hooks: {
     beforeRequest: [
       request => {
