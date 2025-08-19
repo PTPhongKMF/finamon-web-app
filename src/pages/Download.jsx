@@ -20,14 +20,15 @@ export default function Download() {
   const accountCount = useQuery({
     queryKey: ["accountCount"],
     queryFn: async () => {
-      return 52;
+      const count = await kyAspDotnet.get("api/user/total-active").json();
+      return {count};
     }
   });
 
   const visitCount = useQuery({
     queryKey: ["visitCount"],
     queryFn: async () => {
-      return await kyAspDotnet.get("api/siteanalytic/5").json()
+      return await kyAspDotnet.get("api/siteanalytic/5").json();
     }
   });
 

@@ -27,6 +27,25 @@ export default function CurrentSubscription() {
     }
   })
 
+  const userSubscription = useQuery({
+    queryKey: ["userMemberships", user?.id],
+    enabled: Boolean(user?.id),
+    queryFn: async () => {
+      return await kyAspDotnet.get("api/memberships/users", {
+        searchParams: {
+          IsActive: true,
+          PageNumber: 1,
+          PageSize: 1000,
+          IsDeleted: false
+        }
+      }).json();
+    }
+  })
+
+  const currentMembershipName = userSubscription.isSuccess
+    ? userSubscription.data?.items?.find(item => Number(item.userId) === Number(user?.id))?.membershipName ?? null
+    : null;
+
   return (
     <Card>
       <CardHeader>
@@ -38,7 +57,7 @@ export default function CurrentSubscription() {
         <p className="">
           {m["profile.currentSubscription"]() + ": "}
           <span className="text-green-500 text-2xl font-bold">
-            {user.subscription}
+            {userSubscription.isLoading ? "..." : (currentMembershipName ?? "N/A")}
           </span>
         </p>
 
