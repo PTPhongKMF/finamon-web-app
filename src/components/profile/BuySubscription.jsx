@@ -27,7 +27,7 @@ export default function BuySubscription() {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [note, setNote] = useState("");
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-  const paymentQrImageUrls = ["/images/QR/PVCB.jfif"];
+  const paymentQrImageUrls = ["/images/QR/QR-phong.jpg", "/images/QR/QR-khiem.jpg"];
   const [previewUrl, setPreviewUrl] = useState(null);
 
   const receiptHistoryQuery = useQuery({

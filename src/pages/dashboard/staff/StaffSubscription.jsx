@@ -8,6 +8,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from ".
 import { Alert, AlertDescription } from "../../../components/shadcn/alert";
 import { AlertCircle } from "lucide-react";
 import { useUserStore } from "../../../stores/userStore";
+import { addMonth, addYear } from "@formkit/tempo";
 
 function StaffSubscription() {
   const user = useUserStore(state => state.user);
@@ -27,17 +28,24 @@ function StaffSubscription() {
   });
 
   const markPaidMutation = useMutation({
-    mutationFn: async ({ id, membershipId }) => {
+    mutationFn: async (r) => {
       // Step 1: mark receipt as Paid
-      await kyAspDotnet.put(`api/receipt/${id}`, {
+      await kyAspDotnet.put(`api/receipt/${r.id}`, {
         json: { status: "Paid" },
       }).json();
 
       // Step 2: assign membership to user
-      await kyAspDotnet.post("api/memberships/assign", {
+      const now = new Date();;
+      let end;
+
+      if (r.amount == 19000) end = addMonth(now, 1, true);
+      else end = addYear(now, 1, true);
+
+      await kyAspDotnet.put(`api/memberships/user/${user.id}`, {
         json: {
-          userId: user.id,
-          membershipId,
+          membershipId: r.membershipId,
+          startDate: now.toISOString(),
+          endDate: end.toISOString()
         },
       }).json();
 
@@ -106,7 +114,7 @@ function StaffSubscription() {
                           disabled={markPaidMutation.isPending}
                           onValueChange={(value) => {
                             if (value === "paid") {
-                              markPaidMutation.mutate({ id: r.id, membershipId: r.membershipId });
+                              markPaidMutation.mutate(r);
                             }
                           }}
                         >
